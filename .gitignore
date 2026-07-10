@@ -1,0 +1,48 @@
+# Cloudflare Workers
+.dev.vars
+.wrangler/
+node_modules/
+# 実際の設定はwrangler.toml.exampleを参照（KV IDを公開しないため実物は除外）
+buffito-ai-proxy/wrangler.toml
+
+# Secrets
+.env
+.env.local
+.secrets.local
+*.pem
+*.key
+
+# Xcode
+*.xcuserdata/
+*.xcuserstate
+*.xcuserdatad
+DerivedData/
+build/
+
+# macOS
+.DS_Store
+
+# 非公開ドキュメント（個人情報・内部メモを含むため公開しない）
+STATUS.md
+FOR_CODEX.md
+CLAUDE.md
+AGENTS.md
+TODO.md
+REQUIREMENTS.md
+APP_STORE_SUBMISSION.md
+RELEASE_CHECKLIST.md
+CHARACTER_DESIGN_BRIEF.md
+AI_INTEGRATION_HANDOFF.md
+CODE_TEXTBOOK.md
+GITHUB_GUIDE.md
+INTERVIEW_TALKING_POINTS.md
+TECH_STACK.md
+Buffito_開発フロー.pptx
+handoff/
+.claude/
+
+# 画像の元素材・バックアップ（アプリが使う画像はAssets.xcassetsに登録済み）
+BuffitoStateImages/
+BuffitoWidgetImages/
+Buffito picture/
+Buffito_app_icon_1024.png

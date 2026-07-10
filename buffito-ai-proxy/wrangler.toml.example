@@ -1,0 +1,15 @@
+name = "buffito-ai-proxy"
+main = "src/index.ts"
+compatibility_date = "2026-06-27"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "BUFFITO_RATE_LIMIT"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+preview_id = "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
+
+[vars]
+GEMINI_MODEL = "gemini-2.5-flash"
+DAILY_LIMIT_FREE = "10"
+# 全デバイス合算の1日あたり上限（コスト濫用への非常ブレーキ）
+DAILY_LIMIT_GLOBAL = "500"

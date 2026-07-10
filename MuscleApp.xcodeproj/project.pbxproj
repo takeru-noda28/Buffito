@@ -1,0 +1,995 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0D9B0AAD2FBB416400F6F31E /* MuscleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B0AAC2FBB416400F6F31E /* MuscleAppApp.swift */; };
+		0D9B0AAF2FBB416400F6F31E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9B0AAE2FBB416400F6F31E /* ContentView.swift */; };
+		0D9B0AB12FBB416600F6F31E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9B0AB02FBB416600F6F31E /* Assets.xcassets */; };
+		0D9B0AB42FBB416600F6F31E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9B0AB32FBB416600F6F31E /* Preview Assets.xcassets */; };
+		0DAA00022FBE0000002056B8 /* SwipeBackEnabler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00012FBE0000002056B8 /* SwipeBackEnabler.swift */; };
+		0DAA00042FBE0000002056B8 /* PaywallSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00032FBE0000002056B8 /* PaywallSheet.swift */; };
+		0DAA00062FBE0000002056B8 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00052FBE0000002056B8 /* PrivacyPolicyView.swift */; };
+		0DAA00082FBE0000002056B8 /* ProComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00072FBE0000002056B8 /* ProComparisonView.swift */; };
+		0DAA000A2FBE0000002056B8 /* TermsOfUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00092FBE0000002056B8 /* TermsOfUseView.swift */; };
+		0DAA000C2FBE0000002056B8 /* ContactFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA000B2FBE0000002056B8 /* ContactFormView.swift */; };
+		0DAA000E2FBE0000002056B8 /* DailyReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA000D2FBE0000002056B8 /* DailyReminder.swift */; };
+		0DAA00102FBE0000002056B8 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA000F2FBE0000002056B8 /* NotificationSettingsView.swift */; };
+		0DAA00122FBE0000002056B8 /* ThemeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00112FBE0000002056B8 /* ThemeSettingsView.swift */; };
+		0DAA00142FBE0000002056B8 /* AnnouncementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00132FBE0000002056B8 /* AnnouncementsView.swift */; };
+		0DAA00162FBE0000002056B8 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00152FBE0000002056B8 /* HowToUseView.swift */; };
+		0DAA00182FBE0000002056B8 /* BuffitoMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00172FBE0000002056B8 /* BuffitoMood.swift */; };
+		0DAA001A2FBE0000002056B8 /* BuffitoMessageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00192FBE0000002056B8 /* BuffitoMessageBank.swift */; };
+		0DAA001C2FBE0000002056B8 /* StreakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA001B2FBE0000002056B8 /* StreakTracker.swift */; };
+		0DAA001E2FBE0000002056B8 /* PRDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA001D2FBE0000002056B8 /* PRDetector.swift */; };
+		0DAA00202FBE0000002056B8 /* BuffitoNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA001F2FBE0000002056B8 /* BuffitoNotifier.swift */; };
+		0DAA00222FBE0000002056B8 /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00212FBE0000002056B8 /* NotificationDelegate.swift */; };
+		0DAA00242FBE0000002056B8 /* AddWorkoutFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00232FBE0000002056B8 /* AddWorkoutFlowView.swift */; };
+		0DAA00262FBE0000002056B8 /* DailyReminderMessageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00252FBE0000002056B8 /* DailyReminderMessageBank.swift */; };
+		0DAA002A2FBE0000002056B8 /* StreakDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00292FBE0000002056B8 /* StreakDetailView.swift */; };
+		0DAA002C2FBE0000002056B8 /* TimerImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA002B2FBE0000002056B8 /* TimerImageStore.swift */; };
+		0DAA002E2FBE0000002056B8 /* TimerTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA002D2FBE0000002056B8 /* TimerTheme.swift */; };
+		0DAA00302FBE0000002056B8 /* VolumeTier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA002F2FBE0000002056B8 /* VolumeTier.swift */; };
+		0DAA00322FBE0000002056B8 /* WeeklyHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00312FBE0000002056B8 /* WeeklyHeatmap.swift */; };
+		0DAA00342FBE0000002056B8 /* PastDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00332FBE0000002056B8 /* PastDayView.swift */; };
+		0DAA00362FBE0000002056B8 /* OneRMCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00352FBE0000002056B8 /* OneRMCalculator.swift */; };
+		0DAA00382FBE0000002056B8 /* ExerciseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00372FBE0000002056B8 /* ExerciseHistoryView.swift */; };
+		0DAA003A2FBE0000002056B8 /* GrowthRanking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00392FBE0000002056B8 /* GrowthRanking.swift */; };
+		0DAA003C2FBE0000002056B8 /* PerExerciseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA003B2FBE0000002056B8 /* PerExerciseSection.swift */; };
+		0DAA003E2FBE0000002056B8 /* ActivityRingsTimerDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA003D2FBE0000002056B8 /* ActivityRingsTimerDial.swift */; };
+		0DAA003F2FBE0000002056B8 /* ModelContextSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00402FBE0000002056B8 /* ModelContextSaver.swift */; };
+		0DAA00422FBE0000002056B8 /* AIMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00412FBE0000002056B8 /* AIMessage.swift */; };
+		0DAA00442FBE0000002056B8 /* AIContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00432FBE0000002056B8 /* AIContextBuilder.swift */; };
+		0DAA00462FBE0000002056B8 /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00452FBE0000002056B8 /* AIService.swift */; };
+		0DAA00492FBE0000002056B8 /* AIConsentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00482FBE0000002056B8 /* AIConsentSheet.swift */; };
+		0DAA004B2FBE0000002056B8 /* AIRateLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA004A2FBE0000002056B8 /* AIRateLimitView.swift */; };
+		0DAA004D2FBE0000002056B8 /* AIChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA004C2FBE0000002056B8 /* AIChatView.swift */; };
+		0DAA00992FBE0000002056B8 /* LocalFAQResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00982FBE0000002056B8 /* LocalFAQResponder.swift */; };
+		0DAA00A12FBE0000002056B8 /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00A02FBE0000002056B8 /* AppLog.swift */; };
+		0DAA00A32FBE0000002056B8 /* RestRecordingViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00A22FBE0000002056B8 /* RestRecordingViews.swift */; };
+		0DAA00A52FBE0000002056B8 /* PreviousSetsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00A42FBE0000002056B8 /* PreviousSetsCard.swift */; };
+		0DAA00A72FBE0000002056B8 /* PRCelebrationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00A62FBE0000002056B8 /* PRCelebrationBanner.swift */; };
+		0DAA00A92FBE0000002056B8 /* GrowthSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00A82FBE0000002056B8 /* GrowthSummaryCard.swift */; };
+		0DAA00AB2FBE0000002056B8 /* TodaySetsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00AA2FBE0000002056B8 /* TodaySetsList.swift */; };
+		0DAA00AD2FBE0000002056B8 /* SetInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00AC2FBE0000002056B8 /* SetInputBar.swift */; };
+		0DAA00AF2FBE0000002056B8 /* TimerDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00AE2FBE0000002056B8 /* TimerDial.swift */; };
+		0DAA00B12FBE0000002056B8 /* CenterImageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00B02FBE0000002056B8 /* CenterImageControl.swift */; };
+		0DAA00B32FBE0000002056B8 /* TimerPresetViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00B22FBE0000002056B8 /* TimerPresetViews.swift */; };
+		0DAA00B52FBE0000002056B8 /* TimerControlButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00B42FBE0000002056B8 /* TimerControlButtons.swift */; };
+		0DAA00B72FBE0000002056B8 /* TimerRestBanners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00B62FBE0000002056B8 /* TimerRestBanners.swift */; };
+		0DAA00C22FBE0000002056B8 /* TodayWorkoutAdvisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00C12FBE0000002056B8 /* TodayWorkoutAdvisor.swift */; };
+		0DAA00C42FBE0000002056B8 /* BuffitoHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00C32FBE0000002056B8 /* BuffitoHomeView.swift */; };
+		0DAA00C62FBE0000002056B8 /* TodayWorkoutConsultSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00C52FBE0000002056B8 /* TodayWorkoutConsultSheet.swift */; };
+		0DAA00D12FBE0000002056B8 /* StagnationAdvisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00D02FBE0000002056B8 /* StagnationAdvisor.swift */; };
+		0DAA00D32FBE0000002056B8 /* StagnationConsultSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00D22FBE0000002056B8 /* StagnationConsultSheet.swift */; };
+		0DAA00D52FBE0000002056B8 /* RestOrGoAdvisor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00D42FBE0000002056B8 /* RestOrGoAdvisor.swift */; };
+		0DAA00D72FBE0000002056B8 /* RestOrGoConsultSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00D62FBE0000002056B8 /* RestOrGoConsultSheet.swift */; };
+		0DAA00D92FBE0000002056B8 /* FAQAnswerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00D82FBE0000002056B8 /* FAQAnswerSheet.swift */; };
+		0DAA00DB2FBE0000002056B8 /* AnalyticsMiniCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00DA2FBE0000002056B8 /* AnalyticsMiniCard.swift */; };
+		0DAA00DD2FBE0000002056B8 /* FAQMindMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00DC2FBE0000002056B8 /* FAQMindMapView.swift */; };
+		0DAA00DF2FBE0000002056B8 /* ProFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00DE2FBE0000002056B8 /* ProFeature.swift */; };
+		0DAA00E12FBE0000002056B8 /* BuffitoHeroCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00E02FBE0000002056B8 /* BuffitoHeroCard.swift */; };
+		0DAA00E72FBE0000002056B8 /* BuffitoSpeechBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00E62FBE0000002056B8 /* BuffitoSpeechBank.swift */; };
+		0DAA00E82FBE0000002056B8 /* WorkoutFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00E92FBE0000002056B8 /* WorkoutFormat.swift */; };
+		0DAA00EB2FBE0000002056B8 /* BuffitoSpeechBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00EA2FBE0000002056B8 /* BuffitoSpeechBubble.swift */; };
+		0DAA00ED2FBE0000002056B8 /* BuffitoSpeechCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00EC2FBE0000002056B8 /* BuffitoSpeechCard.swift */; };
+		0DAA00EF2FBE0000002056B8 /* BuffitoMoodMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00EE2FBE0000002056B8 /* BuffitoMoodMeter.swift */; };
+		0DAA00F12FBE0000002056B8 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00F02FBE0000002056B8 /* AppColor.swift */; };
+		0DAA00F32FBE0000002056B8 /* AppearanceMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00F22FBE0000002056B8 /* AppearanceMode.swift */; };
+		0DAA00F52FBE0000002056B8 /* BuffitoMoodTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00F62FBE0000002056B8 /* BuffitoMoodTransition.swift */; };
+		0DAA00F82FBE0000002056B8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0DAA00F72FBE0000002056B8 /* PrivacyInfo.xcprivacy */; };
+		0DBDE7402FBD58C3002056B8 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7282FBD58C3002056B8 /* Exercise.swift */; };
+		0DBDE7412FBD58C3002056B8 /* MotivationNotifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE72C2FBD58C3002056B8 /* MotivationNotifier.swift */; };
+		0DBDE7422FBD58C3002056B8 /* WorkoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7292FBD58C3002056B8 /* WorkoutSet.swift */; };
+		0DBDE7432FBD58C3002056B8 /* ExerciseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7362FBD58C3002056B8 /* ExerciseDetailView.swift */; };
+		0DBDE7442FBD58C3002056B8 /* AlarmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE72B2FBD58C3002056B8 /* AlarmPlayer.swift */; };
+		0DBDE7452FBD58C3002056B8 /* RestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE72E2FBD58C3002056B8 /* RestSession.swift */; };
+		0DBDE7462FBD58C3002056B8 /* BodyPart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7272FBD58C3002056B8 /* BodyPart.swift */; };
+		0DBDE7472FBD58C3002056B8 /* PremiumManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE72D2FBD58C3002056B8 /* PremiumManager.swift */; };
+		0DBDE7482FBD58C3002056B8 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7372FBD58C3002056B8 /* ExerciseListView.swift */; };
+		0DBDE7492FBD58C3002056B8 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7332FBD58C3002056B8 /* CalendarView.swift */; };
+		0DBDE74A2FBD58C3002056B8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE73B2FBD58C3002056B8 /* SettingsView.swift */; };
+		0DBDE74B2FBD58C3002056B8 /* WorkoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE72F2FBD58C3002056B8 /* WorkoutContext.swift */; };
+		0DBDE74C2FBD58C3002056B8 /* DaySummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7342FBD58C3002056B8 /* DaySummaryView.swift */; };
+		0DBDE74D2FBD58C3002056B8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7392FBD58C3002056B8 /* HomeView.swift */; };
+		0DBDE74E2FBD58C3002056B8 /* AnalyticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE7312FBD58C3002056B8 /* AnalyticsView.swift */; };
+		0DBDE74F2FBD58C3002056B8 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDE73D2FBD58C3002056B8 /* TimerView.swift */; };
+		0DFACE112FBE1000002056B8 /* BuffitoWidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE072FBE1000002056B8 /* BuffitoWidgetBridge.swift */; };
+		0DFACE122FBE1000002056B8 /* BuffitoMoodMeter+WorkoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE082FBE1000002056B8 /* BuffitoMoodMeter+WorkoutSet.swift */; };
+		0DFACE132FBE1000002056B8 /* BuffitoWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE022FBE1000002056B8 /* BuffitoWidgetBundle.swift */; };
+		0DFACE142FBE1000002056B8 /* BuffitoStatusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE032FBE1000002056B8 /* BuffitoStatusWidget.swift */; };
+		0DFACE152FBE1000002056B8 /* BuffitoWidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE072FBE1000002056B8 /* BuffitoWidgetBridge.swift */; };
+		0DFACE162FBE1000002056B8 /* BuffitoMoodMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00EE2FBE0000002056B8 /* BuffitoMoodMeter.swift */; };
+		0DFACE172FBE1000002056B8 /* BuffitoMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00172FBE0000002056B8 /* BuffitoMood.swift */; };
+		0DFACE182FBE1000002056B8 /* AppLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00A02FBE0000002056B8 /* AppLog.swift */; };
+		0DFACE192FBE1000002056B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9B0AB02FBB416600F6F31E /* Assets.xcassets */; };
+		0DFACE1A2FBE1000002056B8 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 0DAA00F72FBE0000002056B8 /* PrivacyInfo.xcprivacy */; };
+		0DFACE1B2FBE1000002056B8 /* BuffitoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0DFACE012FBE1000002056B8 /* BuffitoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		0DFACE312FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE322FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift */; };
+		0DFACE332FBE1000002056B8 /* BuffitoWidgetImageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE352FBE1000002056B8 /* BuffitoWidgetImageBank.swift */; };
+		0DFACE342FBE1000002056B8 /* BuffitoWidgetDailyPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE362FBE1000002056B8 /* BuffitoWidgetDailyPool.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0D9B0AA92FBB416400F6F31E /* MuscleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MuscleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D9B0AAC2FBB416400F6F31E /* MuscleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleAppApp.swift; sourceTree = "<group>"; };
+		0D9B0AAE2FBB416400F6F31E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0D9B0AB02FBB416600F6F31E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0D9B0AB32FBB416600F6F31E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0DAA00012FBE0000002056B8 /* SwipeBackEnabler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeBackEnabler.swift; sourceTree = "<group>"; };
+		0DAA00032FBE0000002056B8 /* PaywallSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallSheet.swift; sourceTree = "<group>"; };
+		0DAA00052FBE0000002056B8 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		0DAA00072FBE0000002056B8 /* ProComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProComparisonView.swift; sourceTree = "<group>"; };
+		0DAA00092FBE0000002056B8 /* TermsOfUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseView.swift; sourceTree = "<group>"; };
+		0DAA000B2FBE0000002056B8 /* ContactFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactFormView.swift; sourceTree = "<group>"; };
+		0DAA000D2FBE0000002056B8 /* DailyReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReminder.swift; sourceTree = "<group>"; };
+		0DAA000F2FBE0000002056B8 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		0DAA00112FBE0000002056B8 /* ThemeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsView.swift; sourceTree = "<group>"; };
+		0DAA00132FBE0000002056B8 /* AnnouncementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsView.swift; sourceTree = "<group>"; };
+		0DAA00152FBE0000002056B8 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
+		0DAA00172FBE0000002056B8 /* BuffitoMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoMood.swift; sourceTree = "<group>"; };
+		0DAA00192FBE0000002056B8 /* BuffitoMessageBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoMessageBank.swift; sourceTree = "<group>"; };
+		0DAA001B2FBE0000002056B8 /* StreakTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTracker.swift; sourceTree = "<group>"; };
+		0DAA001D2FBE0000002056B8 /* PRDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRDetector.swift; sourceTree = "<group>"; };
+		0DAA001F2FBE0000002056B8 /* BuffitoNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoNotifier.swift; sourceTree = "<group>"; };
+		0DAA00212FBE0000002056B8 /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+		0DAA00232FBE0000002056B8 /* AddWorkoutFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutFlowView.swift; sourceTree = "<group>"; };
+		0DAA00252FBE0000002056B8 /* DailyReminderMessageBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReminderMessageBank.swift; sourceTree = "<group>"; };
+		0DAA00292FBE0000002056B8 /* StreakDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakDetailView.swift; sourceTree = "<group>"; };
+		0DAA002B2FBE0000002056B8 /* TimerImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerImageStore.swift; sourceTree = "<group>"; };
+		0DAA002D2FBE0000002056B8 /* TimerTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerTheme.swift; sourceTree = "<group>"; };
+		0DAA002F2FBE0000002056B8 /* VolumeTier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeTier.swift; sourceTree = "<group>"; };
+		0DAA00312FBE0000002056B8 /* WeeklyHeatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyHeatmap.swift; sourceTree = "<group>"; };
+		0DAA00332FBE0000002056B8 /* PastDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastDayView.swift; sourceTree = "<group>"; };
+		0DAA00352FBE0000002056B8 /* OneRMCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRMCalculator.swift; sourceTree = "<group>"; };
+		0DAA00372FBE0000002056B8 /* ExerciseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryView.swift; sourceTree = "<group>"; };
+		0DAA00392FBE0000002056B8 /* GrowthRanking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthRanking.swift; sourceTree = "<group>"; };
+		0DAA003B2FBE0000002056B8 /* PerExerciseSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerExerciseSection.swift; sourceTree = "<group>"; };
+		0DAA003D2FBE0000002056B8 /* ActivityRingsTimerDial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRingsTimerDial.swift; sourceTree = "<group>"; };
+		0DAA00402FBE0000002056B8 /* ModelContextSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContextSaver.swift; sourceTree = "<group>"; };
+		0DAA00412FBE0000002056B8 /* AIMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIMessage.swift; sourceTree = "<group>"; };
+		0DAA00432FBE0000002056B8 /* AIContextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIContextBuilder.swift; sourceTree = "<group>"; };
+		0DAA00452FBE0000002056B8 /* AIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIService.swift; sourceTree = "<group>"; };
+		0DAA00482FBE0000002056B8 /* AIConsentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIConsentSheet.swift; sourceTree = "<group>"; };
+		0DAA004A2FBE0000002056B8 /* AIRateLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIRateLimitView.swift; sourceTree = "<group>"; };
+		0DAA004C2FBE0000002056B8 /* AIChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIChatView.swift; sourceTree = "<group>"; };
+		0DAA00982FBE0000002056B8 /* LocalFAQResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFAQResponder.swift; sourceTree = "<group>"; };
+		0DAA00A02FBE0000002056B8 /* AppLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLog.swift; sourceTree = "<group>"; };
+		0DAA00A22FBE0000002056B8 /* RestRecordingViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRecordingViews.swift; sourceTree = "<group>"; };
+		0DAA00A42FBE0000002056B8 /* PreviousSetsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousSetsCard.swift; sourceTree = "<group>"; };
+		0DAA00A62FBE0000002056B8 /* PRCelebrationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRCelebrationBanner.swift; sourceTree = "<group>"; };
+		0DAA00A82FBE0000002056B8 /* GrowthSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowthSummaryCard.swift; sourceTree = "<group>"; };
+		0DAA00AA2FBE0000002056B8 /* TodaySetsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaySetsList.swift; sourceTree = "<group>"; };
+		0DAA00AC2FBE0000002056B8 /* SetInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetInputBar.swift; sourceTree = "<group>"; };
+		0DAA00AE2FBE0000002056B8 /* TimerDial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDial.swift; sourceTree = "<group>"; };
+		0DAA00B02FBE0000002056B8 /* CenterImageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterImageControl.swift; sourceTree = "<group>"; };
+		0DAA00B22FBE0000002056B8 /* TimerPresetViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerPresetViews.swift; sourceTree = "<group>"; };
+		0DAA00B42FBE0000002056B8 /* TimerControlButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControlButtons.swift; sourceTree = "<group>"; };
+		0DAA00B62FBE0000002056B8 /* TimerRestBanners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRestBanners.swift; sourceTree = "<group>"; };
+		0DAA00C12FBE0000002056B8 /* TodayWorkoutAdvisor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkoutAdvisor.swift; sourceTree = "<group>"; };
+		0DAA00C32FBE0000002056B8 /* BuffitoHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoHomeView.swift; sourceTree = "<group>"; };
+		0DAA00C52FBE0000002056B8 /* TodayWorkoutConsultSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWorkoutConsultSheet.swift; sourceTree = "<group>"; };
+		0DAA00D02FBE0000002056B8 /* StagnationAdvisor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagnationAdvisor.swift; sourceTree = "<group>"; };
+		0DAA00D22FBE0000002056B8 /* StagnationConsultSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StagnationConsultSheet.swift; sourceTree = "<group>"; };
+		0DAA00D42FBE0000002056B8 /* RestOrGoAdvisor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestOrGoAdvisor.swift; sourceTree = "<group>"; };
+		0DAA00D62FBE0000002056B8 /* RestOrGoConsultSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestOrGoConsultSheet.swift; sourceTree = "<group>"; };
+		0DAA00D82FBE0000002056B8 /* FAQAnswerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQAnswerSheet.swift; sourceTree = "<group>"; };
+		0DAA00DA2FBE0000002056B8 /* AnalyticsMiniCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsMiniCard.swift; sourceTree = "<group>"; };
+		0DAA00DC2FBE0000002056B8 /* FAQMindMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQMindMapView.swift; sourceTree = "<group>"; };
+		0DAA00DE2FBE0000002056B8 /* ProFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFeature.swift; sourceTree = "<group>"; };
+		0DAA00E02FBE0000002056B8 /* BuffitoHeroCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoHeroCard.swift; sourceTree = "<group>"; };
+		0DAA00E62FBE0000002056B8 /* BuffitoSpeechBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoSpeechBank.swift; sourceTree = "<group>"; };
+		0DAA00E92FBE0000002056B8 /* WorkoutFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutFormat.swift; sourceTree = "<group>"; };
+		0DAA00EA2FBE0000002056B8 /* BuffitoSpeechBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoSpeechBubble.swift; sourceTree = "<group>"; };
+		0DAA00EC2FBE0000002056B8 /* BuffitoSpeechCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoSpeechCard.swift; sourceTree = "<group>"; };
+		0DAA00EE2FBE0000002056B8 /* BuffitoMoodMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoMoodMeter.swift; sourceTree = "<group>"; };
+		0DAA00F02FBE0000002056B8 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		0DAA00F22FBE0000002056B8 /* AppearanceMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceMode.swift; sourceTree = "<group>"; };
+		0DAA00F62FBE0000002056B8 /* BuffitoMoodTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoMoodTransition.swift; sourceTree = "<group>"; };
+		0DAA00F72FBE0000002056B8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0DBDE7272FBD58C3002056B8 /* BodyPart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyPart.swift; sourceTree = "<group>"; };
+		0DBDE7282FBD58C3002056B8 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		0DBDE7292FBD58C3002056B8 /* WorkoutSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSet.swift; sourceTree = "<group>"; };
+		0DBDE72B2FBD58C3002056B8 /* AlarmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPlayer.swift; sourceTree = "<group>"; };
+		0DBDE72C2FBD58C3002056B8 /* MotivationNotifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotivationNotifier.swift; sourceTree = "<group>"; };
+		0DBDE72D2FBD58C3002056B8 /* PremiumManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumManager.swift; sourceTree = "<group>"; };
+		0DBDE72E2FBD58C3002056B8 /* RestSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSession.swift; sourceTree = "<group>"; };
+		0DBDE72F2FBD58C3002056B8 /* WorkoutContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutContext.swift; sourceTree = "<group>"; };
+		0DBDE7312FBD58C3002056B8 /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
+		0DBDE7332FBD58C3002056B8 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		0DBDE7342FBD58C3002056B8 /* DaySummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaySummaryView.swift; sourceTree = "<group>"; };
+		0DBDE7362FBD58C3002056B8 /* ExerciseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseDetailView.swift; sourceTree = "<group>"; };
+		0DBDE7372FBD58C3002056B8 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		0DBDE7392FBD58C3002056B8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		0DBDE73B2FBD58C3002056B8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		0DBDE73D2FBD58C3002056B8 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		0DFACE012FBE1000002056B8 /* BuffitoWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BuffitoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DFACE022FBE1000002056B8 /* BuffitoWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetBundle.swift; sourceTree = "<group>"; };
+		0DFACE032FBE1000002056B8 /* BuffitoStatusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoStatusWidget.swift; sourceTree = "<group>"; };
+		0DFACE042FBE1000002056B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0DFACE052FBE1000002056B8 /* BuffitoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BuffitoWidget.entitlements; sourceTree = "<group>"; };
+		0DFACE062FBE1000002056B8 /* MuscleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MuscleApp.entitlements; sourceTree = "<group>"; };
+		0DFACE072FBE1000002056B8 /* BuffitoWidgetBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetBridge.swift; sourceTree = "<group>"; };
+		0DFACE082FBE1000002056B8 /* BuffitoMoodMeter+WorkoutSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BuffitoMoodMeter+WorkoutSet.swift"; sourceTree = "<group>"; };
+		0DFACE322FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetSpeechBank.swift; sourceTree = "<group>"; };
+		0DFACE352FBE1000002056B8 /* BuffitoWidgetImageBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetImageBank.swift; sourceTree = "<group>"; };
+		0DFACE362FBE1000002056B8 /* BuffitoWidgetDailyPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetDailyPool.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0D9B0AA62FBB416400F6F31E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DFACE262FBE1000002056B8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0DFACE282FBE1000002056B8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0DFACE1B2FBE1000002056B8 /* BuffitoWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXContainerItemProxy section */
+		0DFACE2A2FBE1000002056B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D9B0AA12FBB416400F6F31E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0DFACE212FBE1000002056B8;
+			remoteInfo = BuffitoWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXTargetDependency section */
+		0DFACE292FBE1000002056B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0DFACE212FBE1000002056B8 /* BuffitoWidgetExtension */;
+			targetProxy = 0DFACE2A2FBE1000002056B8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXGroup section */
+		0D9B0AA02FBB416400F6F31E = {
+			isa = PBXGroup;
+			children = (
+				0D9B0AAB2FBB416400F6F31E /* MuscleApp */,
+				0DFACE2B2FBE1000002056B8 /* BuffitoWidget */,
+				0D9B0AAA2FBB416400F6F31E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0D9B0AAA2FBB416400F6F31E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0D9B0AA92FBB416400F6F31E /* MuscleApp.app */,
+				0DFACE012FBE1000002056B8 /* BuffitoWidgetExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0DFACE2B2FBE1000002056B8 /* BuffitoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0DFACE022FBE1000002056B8 /* BuffitoWidgetBundle.swift */,
+				0DFACE032FBE1000002056B8 /* BuffitoStatusWidget.swift */,
+				0DFACE322FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift */,
+				0DFACE352FBE1000002056B8 /* BuffitoWidgetImageBank.swift */,
+				0DFACE362FBE1000002056B8 /* BuffitoWidgetDailyPool.swift */,
+				0DFACE042FBE1000002056B8 /* Info.plist */,
+				0DFACE052FBE1000002056B8 /* BuffitoWidget.entitlements */,
+			);
+			path = BuffitoWidget;
+			sourceTree = "<group>";
+		};
+		0D9B0AAB2FBB416400F6F31E /* MuscleApp */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE72A2FBD58C3002056B8 /* Models */,
+				0DBDE7302FBD58C3002056B8 /* Services */,
+				0DBDE73F2FBD58C3002056B8 /* Views */,
+				0D9B0AAC2FBB416400F6F31E /* MuscleAppApp.swift */,
+				0D9B0AAE2FBB416400F6F31E /* ContentView.swift */,
+				0D9B0AB02FBB416600F6F31E /* Assets.xcassets */,
+				0DAA00F72FBE0000002056B8 /* PrivacyInfo.xcprivacy */,
+				0DFACE062FBE1000002056B8 /* MuscleApp.entitlements */,
+				0D9B0AB22FBB416600F6F31E /* Preview Content */,
+			);
+			path = MuscleApp;
+			sourceTree = "<group>";
+		};
+		0D9B0AB22FBB416600F6F31E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0D9B0AB32FBB416600F6F31E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0DAA00472FBE0000002056B8 /* AI */ = {
+			isa = PBXGroup;
+			children = (
+				0DAA004C2FBE0000002056B8 /* AIChatView.swift */,
+				0DAA00482FBE0000002056B8 /* AIConsentSheet.swift */,
+				0DAA004A2FBE0000002056B8 /* AIRateLimitView.swift */,
+			);
+			path = AI;
+			sourceTree = "<group>";
+		};
+		0DAA00C02FBE0000002056B8 /* Buffito */ = {
+			isa = PBXGroup;
+			children = (
+				0DAA00C32FBE0000002056B8 /* BuffitoHomeView.swift */,
+				0DAA00C52FBE0000002056B8 /* TodayWorkoutConsultSheet.swift */,
+				0DAA00D22FBE0000002056B8 /* StagnationConsultSheet.swift */,
+				0DAA00D62FBE0000002056B8 /* RestOrGoConsultSheet.swift */,
+				0DAA00D82FBE0000002056B8 /* FAQAnswerSheet.swift */,
+				0DAA00DA2FBE0000002056B8 /* AnalyticsMiniCard.swift */,
+				0DAA00DC2FBE0000002056B8 /* FAQMindMapView.swift */,
+				0DAA00E02FBE0000002056B8 /* BuffitoHeroCard.swift */,
+				0DAA00EA2FBE0000002056B8 /* BuffitoSpeechBubble.swift */,
+			);
+			path = Buffito;
+			sourceTree = "<group>";
+		};
+		0DAA00F42FBE0000002056B8 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				0DAA00F02FBE0000002056B8 /* AppColor.swift */,
+				0DAA00F22FBE0000002056B8 /* AppearanceMode.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		0DBDE72A2FBD58C3002056B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE7272FBD58C3002056B8 /* BodyPart.swift */,
+				0DBDE7282FBD58C3002056B8 /* Exercise.swift */,
+				0DBDE7292FBD58C3002056B8 /* WorkoutSet.swift */,
+				0DAA00172FBE0000002056B8 /* BuffitoMood.swift */,
+				0DAA00192FBE0000002056B8 /* BuffitoMessageBank.swift */,
+				0DAA00252FBE0000002056B8 /* DailyReminderMessageBank.swift */,
+				0DAA00412FBE0000002056B8 /* AIMessage.swift */,
+				0DAA002D2FBE0000002056B8 /* TimerTheme.swift */,
+				0DAA002F2FBE0000002056B8 /* VolumeTier.swift */,
+				0DAA00DE2FBE0000002056B8 /* ProFeature.swift */,
+				0DAA00E62FBE0000002056B8 /* BuffitoSpeechBank.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0DBDE7302FBD58C3002056B8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE72B2FBD58C3002056B8 /* AlarmPlayer.swift */,
+				0DBDE72C2FBD58C3002056B8 /* MotivationNotifier.swift */,
+				0DBDE72D2FBD58C3002056B8 /* PremiumManager.swift */,
+				0DBDE72E2FBD58C3002056B8 /* RestSession.swift */,
+				0DBDE72F2FBD58C3002056B8 /* WorkoutContext.swift */,
+				0DAA00012FBE0000002056B8 /* SwipeBackEnabler.swift */,
+				0DAA000D2FBE0000002056B8 /* DailyReminder.swift */,
+				0DAA001B2FBE0000002056B8 /* StreakTracker.swift */,
+				0DAA001D2FBE0000002056B8 /* PRDetector.swift */,
+				0DAA001F2FBE0000002056B8 /* BuffitoNotifier.swift */,
+				0DAA00212FBE0000002056B8 /* NotificationDelegate.swift */,
+				0DAA002B2FBE0000002056B8 /* TimerImageStore.swift */,
+				0DAA00352FBE0000002056B8 /* OneRMCalculator.swift */,
+				0DAA00432FBE0000002056B8 /* AIContextBuilder.swift */,
+				0DAA00452FBE0000002056B8 /* AIService.swift */,
+				0DAA00982FBE0000002056B8 /* LocalFAQResponder.swift */,
+				0DAA00C12FBE0000002056B8 /* TodayWorkoutAdvisor.swift */,
+				0DAA00D02FBE0000002056B8 /* StagnationAdvisor.swift */,
+				0DAA00D42FBE0000002056B8 /* RestOrGoAdvisor.swift */,
+				0DAA00E92FBE0000002056B8 /* WorkoutFormat.swift */,
+				0DAA00EE2FBE0000002056B8 /* BuffitoMoodMeter.swift */,
+				0DFACE082FBE1000002056B8 /* BuffitoMoodMeter+WorkoutSet.swift */,
+				0DFACE072FBE1000002056B8 /* BuffitoWidgetBridge.swift */,
+				0DAA00F62FBE0000002056B8 /* BuffitoMoodTransition.swift */,
+				0DAA00402FBE0000002056B8 /* ModelContextSaver.swift */,
+				0DAA00A02FBE0000002056B8 /* AppLog.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0DBDE7322FBD58C3002056B8 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE7312FBD58C3002056B8 /* AnalyticsView.swift */,
+				0DAA00392FBE0000002056B8 /* GrowthRanking.swift */,
+				0DAA003B2FBE0000002056B8 /* PerExerciseSection.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		0DBDE7352FBD58C3002056B8 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE7332FBD58C3002056B8 /* CalendarView.swift */,
+				0DBDE7342FBD58C3002056B8 /* DaySummaryView.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		0DBDE7382FBD58C3002056B8 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE7362FBD58C3002056B8 /* ExerciseDetailView.swift */,
+				0DAA00AC2FBE0000002056B8 /* SetInputBar.swift */,
+				0DAA00AA2FBE0000002056B8 /* TodaySetsList.swift */,
+				0DAA00A82FBE0000002056B8 /* GrowthSummaryCard.swift */,
+				0DAA00A62FBE0000002056B8 /* PRCelebrationBanner.swift */,
+				0DAA00A42FBE0000002056B8 /* PreviousSetsCard.swift */,
+				0DAA00A22FBE0000002056B8 /* RestRecordingViews.swift */,
+				0DBDE7372FBD58C3002056B8 /* ExerciseListView.swift */,
+				0DAA00232FBE0000002056B8 /* AddWorkoutFlowView.swift */,
+				0DAA00372FBE0000002056B8 /* ExerciseHistoryView.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		0DBDE73A2FBD58C3002056B8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE7392FBD58C3002056B8 /* HomeView.swift */,
+				0DAA00EC2FBE0000002056B8 /* BuffitoSpeechCard.swift */,
+				0DAA00292FBE0000002056B8 /* StreakDetailView.swift */,
+				0DAA00312FBE0000002056B8 /* WeeklyHeatmap.swift */,
+				0DAA00332FBE0000002056B8 /* PastDayView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0DBDE73C2FBD58C3002056B8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE73B2FBD58C3002056B8 /* SettingsView.swift */,
+				0DAA00032FBE0000002056B8 /* PaywallSheet.swift */,
+				0DAA00052FBE0000002056B8 /* PrivacyPolicyView.swift */,
+				0DAA00072FBE0000002056B8 /* ProComparisonView.swift */,
+				0DAA00092FBE0000002056B8 /* TermsOfUseView.swift */,
+				0DAA000B2FBE0000002056B8 /* ContactFormView.swift */,
+				0DAA000F2FBE0000002056B8 /* NotificationSettingsView.swift */,
+				0DAA00112FBE0000002056B8 /* ThemeSettingsView.swift */,
+				0DAA00132FBE0000002056B8 /* AnnouncementsView.swift */,
+				0DAA00152FBE0000002056B8 /* HowToUseView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		0DBDE73E2FBD58C3002056B8 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDE73D2FBD58C3002056B8 /* TimerView.swift */,
+				0DAA00B62FBE0000002056B8 /* TimerRestBanners.swift */,
+				0DAA00B42FBE0000002056B8 /* TimerControlButtons.swift */,
+				0DAA00B22FBE0000002056B8 /* TimerPresetViews.swift */,
+				0DAA00B02FBE0000002056B8 /* CenterImageControl.swift */,
+				0DAA00AE2FBE0000002056B8 /* TimerDial.swift */,
+				0DAA003D2FBE0000002056B8 /* ActivityRingsTimerDial.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		0DBDE73F2FBD58C3002056B8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0DAA00472FBE0000002056B8 /* AI */,
+				0DAA00C02FBE0000002056B8 /* Buffito */,
+				0DBDE7322FBD58C3002056B8 /* Analytics */,
+				0DBDE7352FBD58C3002056B8 /* Calendar */,
+				0DBDE7382FBD58C3002056B8 /* Exercise */,
+				0DBDE73A2FBD58C3002056B8 /* Home */,
+				0DBDE73C2FBD58C3002056B8 /* Settings */,
+				0DAA00F42FBE0000002056B8 /* Theme */,
+				0DBDE73E2FBD58C3002056B8 /* Timer */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D9B0AA82FBB416400F6F31E /* MuscleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0D9B0AB72FBB416600F6F31E /* Build configuration list for PBXNativeTarget "MuscleApp" */;
+			buildPhases = (
+				0D9B0AA52FBB416400F6F31E /* Sources */,
+				0D9B0AA62FBB416400F6F31E /* Frameworks */,
+				0D9B0AA72FBB416400F6F31E /* Resources */,
+				0DFACE282FBE1000002056B8 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0DFACE292FBE1000002056B8 /* PBXTargetDependency */,
+			);
+			name = MuscleApp;
+			productName = MuscleApp;
+			productReference = 0D9B0AA92FBB416400F6F31E /* MuscleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0DFACE212FBE1000002056B8 /* BuffitoWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0DFACE222FBE1000002056B8 /* Build configuration list for PBXNativeTarget "BuffitoWidgetExtension" */;
+			buildPhases = (
+				0DFACE252FBE1000002056B8 /* Sources */,
+				0DFACE262FBE1000002056B8 /* Frameworks */,
+				0DFACE272FBE1000002056B8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BuffitoWidgetExtension;
+			productName = BuffitoWidgetExtension;
+			productReference = 0DFACE012FBE1000002056B8 /* BuffitoWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D9B0AA12FBB416400F6F31E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					0D9B0AA82FBB416400F6F31E = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					0DFACE212FBE1000002056B8 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 0D9B0AA42FBB416400F6F31E /* Build configuration list for PBXProject "MuscleApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0D9B0AA02FBB416400F6F31E;
+			productRefGroup = 0D9B0AAA2FBB416400F6F31E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D9B0AA82FBB416400F6F31E /* MuscleApp */,
+				0DFACE212FBE1000002056B8 /* BuffitoWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0D9B0AA72FBB416400F6F31E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DAA00F82FBE0000002056B8 /* PrivacyInfo.xcprivacy in Resources */,
+				0D9B0AB42FBB416600F6F31E /* Preview Assets.xcassets in Resources */,
+				0D9B0AB12FBB416600F6F31E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DFACE272FBE1000002056B8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DFACE192FBE1000002056B8 /* Assets.xcassets in Resources */,
+				0DFACE1A2FBE1000002056B8 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0D9B0AA52FBB416400F6F31E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D9B0AAF2FBB416400F6F31E /* ContentView.swift in Sources */,
+				0D9B0AAD2FBB416400F6F31E /* MuscleAppApp.swift in Sources */,
+				0DBDE7402FBD58C3002056B8 /* Exercise.swift in Sources */,
+				0DBDE7412FBD58C3002056B8 /* MotivationNotifier.swift in Sources */,
+				0DBDE7422FBD58C3002056B8 /* WorkoutSet.swift in Sources */,
+				0DBDE7432FBD58C3002056B8 /* ExerciseDetailView.swift in Sources */,
+				0DAA00AD2FBE0000002056B8 /* SetInputBar.swift in Sources */,
+				0DAA00AB2FBE0000002056B8 /* TodaySetsList.swift in Sources */,
+				0DAA00A92FBE0000002056B8 /* GrowthSummaryCard.swift in Sources */,
+				0DAA00A72FBE0000002056B8 /* PRCelebrationBanner.swift in Sources */,
+				0DAA00A52FBE0000002056B8 /* PreviousSetsCard.swift in Sources */,
+				0DAA00A32FBE0000002056B8 /* RestRecordingViews.swift in Sources */,
+				0DAA00022FBE0000002056B8 /* SwipeBackEnabler.swift in Sources */,
+				0DAA00042FBE0000002056B8 /* PaywallSheet.swift in Sources */,
+				0DAA00062FBE0000002056B8 /* PrivacyPolicyView.swift in Sources */,
+				0DAA00082FBE0000002056B8 /* ProComparisonView.swift in Sources */,
+				0DAA000A2FBE0000002056B8 /* TermsOfUseView.swift in Sources */,
+				0DAA000C2FBE0000002056B8 /* ContactFormView.swift in Sources */,
+				0DAA000E2FBE0000002056B8 /* DailyReminder.swift in Sources */,
+				0DAA00102FBE0000002056B8 /* NotificationSettingsView.swift in Sources */,
+				0DAA00122FBE0000002056B8 /* ThemeSettingsView.swift in Sources */,
+				0DAA00142FBE0000002056B8 /* AnnouncementsView.swift in Sources */,
+				0DAA00162FBE0000002056B8 /* HowToUseView.swift in Sources */,
+				0DAA00182FBE0000002056B8 /* BuffitoMood.swift in Sources */,
+				0DAA00DF2FBE0000002056B8 /* ProFeature.swift in Sources */,
+				0DAA001A2FBE0000002056B8 /* BuffitoMessageBank.swift in Sources */,
+				0DAA001C2FBE0000002056B8 /* StreakTracker.swift in Sources */,
+				0DAA001E2FBE0000002056B8 /* PRDetector.swift in Sources */,
+				0DAA00202FBE0000002056B8 /* BuffitoNotifier.swift in Sources */,
+				0DAA00222FBE0000002056B8 /* NotificationDelegate.swift in Sources */,
+				0DAA00242FBE0000002056B8 /* AddWorkoutFlowView.swift in Sources */,
+				0DAA00262FBE0000002056B8 /* DailyReminderMessageBank.swift in Sources */,
+				0DAA00E72FBE0000002056B8 /* BuffitoSpeechBank.swift in Sources */,
+				0DAA00EF2FBE0000002056B8 /* BuffitoMoodMeter.swift in Sources */,
+				0DFACE122FBE1000002056B8 /* BuffitoMoodMeter+WorkoutSet.swift in Sources */,
+				0DFACE112FBE1000002056B8 /* BuffitoWidgetBridge.swift in Sources */,
+				0DAA00F12FBE0000002056B8 /* AppColor.swift in Sources */,
+				0DAA00F32FBE0000002056B8 /* AppearanceMode.swift in Sources */,
+				0DAA00F52FBE0000002056B8 /* BuffitoMoodTransition.swift in Sources */,
+				0DAA00EB2FBE0000002056B8 /* BuffitoSpeechBubble.swift in Sources */,
+				0DAA00ED2FBE0000002056B8 /* BuffitoSpeechCard.swift in Sources */,
+				0DAA002A2FBE0000002056B8 /* StreakDetailView.swift in Sources */,
+				0DAA002C2FBE0000002056B8 /* TimerImageStore.swift in Sources */,
+				0DAA002E2FBE0000002056B8 /* TimerTheme.swift in Sources */,
+				0DAA00302FBE0000002056B8 /* VolumeTier.swift in Sources */,
+				0DAA00322FBE0000002056B8 /* WeeklyHeatmap.swift in Sources */,
+				0DAA00342FBE0000002056B8 /* PastDayView.swift in Sources */,
+				0DAA00362FBE0000002056B8 /* OneRMCalculator.swift in Sources */,
+				0DAA00382FBE0000002056B8 /* ExerciseHistoryView.swift in Sources */,
+				0DAA003A2FBE0000002056B8 /* GrowthRanking.swift in Sources */,
+				0DAA003C2FBE0000002056B8 /* PerExerciseSection.swift in Sources */,
+				0DAA003E2FBE0000002056B8 /* ActivityRingsTimerDial.swift in Sources */,
+				0DAA00422FBE0000002056B8 /* AIMessage.swift in Sources */,
+				0DAA00442FBE0000002056B8 /* AIContextBuilder.swift in Sources */,
+				0DAA00462FBE0000002056B8 /* AIService.swift in Sources */,
+				0DAA00992FBE0000002056B8 /* LocalFAQResponder.swift in Sources */,
+				0DAA00C22FBE0000002056B8 /* TodayWorkoutAdvisor.swift in Sources */,
+				0DAA00D12FBE0000002056B8 /* StagnationAdvisor.swift in Sources */,
+				0DAA00D52FBE0000002056B8 /* RestOrGoAdvisor.swift in Sources */,
+				0DAA00E82FBE0000002056B8 /* WorkoutFormat.swift in Sources */,
+				0DAA00492FBE0000002056B8 /* AIConsentSheet.swift in Sources */,
+				0DAA004B2FBE0000002056B8 /* AIRateLimitView.swift in Sources */,
+				0DAA004D2FBE0000002056B8 /* AIChatView.swift in Sources */,
+				0DAA00C42FBE0000002056B8 /* BuffitoHomeView.swift in Sources */,
+				0DAA00C62FBE0000002056B8 /* TodayWorkoutConsultSheet.swift in Sources */,
+				0DAA00D32FBE0000002056B8 /* StagnationConsultSheet.swift in Sources */,
+				0DAA00D72FBE0000002056B8 /* RestOrGoConsultSheet.swift in Sources */,
+				0DAA00D92FBE0000002056B8 /* FAQAnswerSheet.swift in Sources */,
+				0DAA00DB2FBE0000002056B8 /* AnalyticsMiniCard.swift in Sources */,
+				0DAA00DD2FBE0000002056B8 /* FAQMindMapView.swift in Sources */,
+				0DAA00E12FBE0000002056B8 /* BuffitoHeroCard.swift in Sources */,
+				0DBDE7442FBD58C3002056B8 /* AlarmPlayer.swift in Sources */,
+				0DBDE7452FBD58C3002056B8 /* RestSession.swift in Sources */,
+				0DBDE7462FBD58C3002056B8 /* BodyPart.swift in Sources */,
+				0DBDE7472FBD58C3002056B8 /* PremiumManager.swift in Sources */,
+				0DBDE7482FBD58C3002056B8 /* ExerciseListView.swift in Sources */,
+				0DBDE7492FBD58C3002056B8 /* CalendarView.swift in Sources */,
+				0DBDE74A2FBD58C3002056B8 /* SettingsView.swift in Sources */,
+				0DBDE74B2FBD58C3002056B8 /* WorkoutContext.swift in Sources */,
+				0DAA003F2FBE0000002056B8 /* ModelContextSaver.swift in Sources */,
+				0DAA00A12FBE0000002056B8 /* AppLog.swift in Sources */,
+				0DBDE74C2FBD58C3002056B8 /* DaySummaryView.swift in Sources */,
+				0DBDE74D2FBD58C3002056B8 /* HomeView.swift in Sources */,
+				0DBDE74E2FBD58C3002056B8 /* AnalyticsView.swift in Sources */,
+				0DBDE74F2FBD58C3002056B8 /* TimerView.swift in Sources */,
+				0DAA00B72FBE0000002056B8 /* TimerRestBanners.swift in Sources */,
+				0DAA00B52FBE0000002056B8 /* TimerControlButtons.swift in Sources */,
+				0DAA00B32FBE0000002056B8 /* TimerPresetViews.swift in Sources */,
+				0DAA00B12FBE0000002056B8 /* CenterImageControl.swift in Sources */,
+				0DAA00AF2FBE0000002056B8 /* TimerDial.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0DFACE252FBE1000002056B8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DFACE132FBE1000002056B8 /* BuffitoWidgetBundle.swift in Sources */,
+				0DFACE142FBE1000002056B8 /* BuffitoStatusWidget.swift in Sources */,
+				0DFACE312FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift in Sources */,
+				0DFACE332FBE1000002056B8 /* BuffitoWidgetImageBank.swift in Sources */,
+				0DFACE342FBE1000002056B8 /* BuffitoWidgetDailyPool.swift in Sources */,
+				0DFACE152FBE1000002056B8 /* BuffitoWidgetBridge.swift in Sources */,
+				0DFACE162FBE1000002056B8 /* BuffitoMoodMeter.swift in Sources */,
+				0DFACE172FBE1000002056B8 /* BuffitoMood.swift in Sources */,
+				0DFACE182FBE1000002056B8 /* AppLog.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0D9B0AB52FBB416600F6F31E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0D9B0AB62FBB416600F6F31E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0D9B0AB82FBB416600F6F31E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MuscleApp/MuscleApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"MuscleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = LL98RL72H4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_AIBackendURL = "https://buffito-ai-proxy.buffito.workers.dev/api/chat";
+				INFOPLIST_KEY_CFBundleDisplayName = Buffito;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0D9B0AB92FBB416600F6F31E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MuscleApp/MuscleApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"MuscleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = LL98RL72H4;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_AIBackendURL = "https://buffito-ai-proxy.buffito.workers.dev/api/chat";
+				INFOPLIST_KEY_CFBundleDisplayName = Buffito;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		0DFACE232FBE1000002056B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BuffitoWidget/BuffitoWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = LL98RL72H4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BuffitoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Buffito;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp.BuffitoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		0DFACE242FBE1000002056B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BuffitoWidget/BuffitoWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = LL98RL72H4;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BuffitoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Buffito;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp.BuffitoWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0D9B0AA42FBB416400F6F31E /* Build configuration list for PBXProject "MuscleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D9B0AB52FBB416600F6F31E /* Debug */,
+				0D9B0AB62FBB416600F6F31E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0D9B0AB72FBB416600F6F31E /* Build configuration list for PBXNativeTarget "MuscleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0D9B0AB82FBB416600F6F31E /* Debug */,
+				0D9B0AB92FBB416600F6F31E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0DFACE222FBE1000002056B8 /* Build configuration list for PBXNativeTarget "BuffitoWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0DFACE232FBE1000002056B8 /* Debug */,
+				0DFACE242FBE1000002056B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D9B0AA12FBB416400F6F31E /* Project object */;
+}
