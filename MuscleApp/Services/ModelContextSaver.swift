@@ -34,4 +34,18 @@ extension ModelContext {
             return nil
         }
     }
+
+    /// 指定モデルの全件削除＋保存を試み、失敗したらログに出す
+    /// - Parameter operation: 何の削除か（例：「AIチャット履歴の削除」）
+    /// - Returns: 削除と保存の両方に成功したら true
+    @discardableResult
+    func deleteAllOrLog<T: PersistentModel>(_ type: T.Type, operation: String) -> Bool {
+        do {
+            try delete(model: type)
+            return saveOrLog(operation)
+        } catch {
+            AppLog.swiftData.error("全件削除失敗（\(operation, privacy: .public)）: \(error.localizedDescription, privacy: .public)")
+            return false
+        }
+    }
 }

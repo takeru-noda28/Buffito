@@ -4,13 +4,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 // 設定画面（Pro / 通知 / テーマ / サポート / その他）
 struct SettingsView: View {
     let onClose: () -> Void
 
+    @Environment(\.modelContext) private var modelContext
+    @Query private var aiMessages: [AIMessage]
+
     @State private var premiumState: Bool = PremiumManager.shared.isPremium
     @State private var showPaywall: Bool = false
+    @State private var showDeleteChatConfirm: Bool = false
     @AppStorage("ai_consent_given") private var aiConsentGiven: Bool = false
 
     private var appVersion: String {
@@ -124,7 +129,45 @@ struct SettingsView: View {
                     }
                 }
                 .padding(.vertical, 12)
+
+                Divider().background(Color.gray.opacity(0.2))
+
+                deleteChatHistoryRow
             }
+        }
+    }
+
+    // AIチャット履歴の削除（履歴が空のときは無効化して件数で状態を示す）
+    private var deleteChatHistoryRow: some View {
+        Button {
+            showDeleteChatConfirm = true
+        } label: {
+            HStack {
+                Image(systemName: "trash.fill")
+                    .foregroundColor(aiMessages.isEmpty ? .gray : .red)
+                    .frame(width: 24)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("チャット履歴を削除")
+                        .foregroundColor(aiMessages.isEmpty ? .gray : .appTextPrimary)
+                    Text(aiMessages.isEmpty ? "履歴はありません" : "\(aiMessages.count)件のメッセージ")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+                Spacer()
+            }
+            .padding(.vertical, 12)
+        }
+        .disabled(aiMessages.isEmpty)
+        .confirmationDialog(
+            "チャット履歴を削除しますか？",
+            isPresented: $showDeleteChatConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("\(aiMessages.count)件のメッセージを削除", role: .destructive) {
+                modelContext.deleteAllOrLog(AIMessage.self, operation: "AIチャット履歴の削除")
+            }
+        } message: {
+            Text("この操作は取り消せません。履歴は端末内にのみ保存されています。")
         }
     }
 

@@ -30,6 +30,7 @@ struct AIChatView: View {
     @State private var limit = Self.defaultDailyLimit
     @State private var showConsent = false
     @State private var showRateLimit = false
+    @State private var showDeleteConfirm = false
 
     private let bottomID = "ai-chat-bottom"
 
@@ -91,11 +92,31 @@ struct AIChatView: View {
             }
 
             Spacer()
-            Color.clear.frame(width: 32, height: 32)
+
+            // 履歴削除（空のときは押せないがレイアウト維持のため常に置く）
+            Button { showDeleteConfirm = true } label: {
+                Image(systemName: "trash")
+                    .font(.subheadline)
+                    .foregroundColor(messages.isEmpty ? .gray.opacity(0.4) : .gray)
+                    .frame(width: 32, height: 32)
+            }
+            .disabled(messages.isEmpty)
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
         .background(Color.appBackground)
+        .confirmationDialog(
+            "チャット履歴を削除しますか？",
+            isPresented: $showDeleteConfirm,
+            titleVisibility: .visible
+        ) {
+            Button("\(messages.count)件のメッセージを削除", role: .destructive) {
+                modelContext.deleteAllOrLog(AIMessage.self, operation: "AIチャット履歴の削除")
+                errorMessage = nil
+            }
+        } message: {
+            Text("この操作は取り消せません。履歴は端末内にのみ保存されています。")
+        }
     }
 
     private var messagesScrollView: some View {
