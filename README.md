@@ -9,7 +9,11 @@
 **「入力が楽で、見た目がカッコよくて、続かない人を支える」** をコンセプトにした iOS 筋トレ記録アプリです。
 記録を続けるとキャラクター「Buffito」が喜び、サボると寂しがって闇堕ちする——継続そのものをゲームにしています。
 
-- **状況**：App Store 申請済み（v1.1）／ TestFlight 外部テスト配信中
+<p align="center">
+  <a href="https://apps.apple.com/jp/app/buffito/id6783427937"><b>📱 App Storeで入手</b></a>
+</p>
+
+- **状況**：**App Store 配信中**（v1.1・2026年7月リリース）
 - **開発期間**：2026年3月〜（個人開発）
 - **コード規模**：Swift 約90ファイル + Cloudflare Workers（TypeScript）
 
