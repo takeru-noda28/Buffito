@@ -595,10 +595,10 @@
 			};
 			buildConfigurationList = 0D9B0AA42FBB416400F6F31E /* Build configuration list for PBXProject "MuscleApp" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ja;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				ja,
 				Base,
 			);
 			mainGroup = 0D9B0AA02FBB416400F6F31E;
@@ -884,7 +884,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MuscleApp/MuscleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"MuscleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				ENABLE_PREVIEWS = YES;
@@ -916,7 +916,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MuscleApp/MuscleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"MuscleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				ENABLE_PREVIEWS = YES;
@@ -947,7 +947,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BuffitoWidget/BuffitoWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BuffitoWidget/Info.plist;
@@ -974,7 +974,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BuffitoWidget/BuffitoWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BuffitoWidget/Info.plist;
