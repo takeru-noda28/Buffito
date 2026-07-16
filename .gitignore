@@ -41,7 +41,10 @@ Buffito_開発フロー.pptx
 handoff/
 .claude/
 
-# 画像の元素材・バックアップ（アプリが使う画像はAssets.xcassetsに登録済み）
+# 画像の元素材・原画・不採用版（アプリが使う画像はアセットカタログに登録済み）
+ArtSources/
+
+# 廃止済み素材パス（誤って再作成した場合の公開防止）
 BuffitoStateImages/
 BuffitoWidgetImages/
 Buffito picture/

@@ -3,18 +3,18 @@
 //  MuscleApp
 //
 //  Buffitoキャラクターの感情状態。
-//  連続日数と不在日数から自動的にムードが決まる。
+//  トレーニング履歴から算出する0〜100のやる気ポイントでムードが決まる。
 //
 
 import SwiftUI
 
 enum BuffitoMood: Int, CaseIterable {
-    case darkside = 0    // 💔 闇堕ち（7日以上不在）
-    case clingy = 1      // 😭 メンヘラ（5-6日不在）
-    case lonely = 2      // 😢 寂しい（2-4日不在）
-    case normal = 3      // 😐 普通（0-1日不在）
-    case happy = 4       // 😊 ご機嫌（連続1-2日）
-    case fired = 5       // 🔥 やる気MAX（連続3日以上）
+    case darkside = 0    // 💔 闇堕ち（0〜9pt）
+    case clingy = 1      // 😭 メンヘラ（10〜24pt）
+    case lonely = 2      // 😢 寂しい（25〜39pt）
+    case normal = 3      // 😐 普通（40〜69pt）
+    case happy = 4       // 😊 ご機嫌（70〜89pt）
+    case fired = 5       // 🔥 やる気MAX（90〜100pt）
 
     var emoji: String {
         switch self {

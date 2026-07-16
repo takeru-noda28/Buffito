@@ -22,6 +22,11 @@
 		0DAA00122FBE0000002056B8 /* ThemeSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00112FBE0000002056B8 /* ThemeSettingsView.swift */; };
 		0DAA00142FBE0000002056B8 /* AnnouncementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00132FBE0000002056B8 /* AnnouncementsView.swift */; };
 		0DAA00162FBE0000002056B8 /* HowToUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00152FBE0000002056B8 /* HowToUseView.swift */; };
+		0DAA00512FBE0000002056B8 /* OnboardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00502FBE0000002056B8 /* OnboardingPage.swift */; };
+		0DAA00532FBE0000002056B8 /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00522FBE0000002056B8 /* OnboardingPageView.swift */; };
+		0DAA00552FBE0000002056B8 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00542FBE0000002056B8 /* OnboardingView.swift */; };
+		0DAA00572FBE0000002056B8 /* WhatsNewSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00562FBE0000002056B8 /* WhatsNewSheet.swift */; };
+		0DAA00592FBE0000002056B8 /* Version12UpdateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00582FBE0000002056B8 /* Version12UpdateView.swift */; };
 		0DAA00182FBE0000002056B8 /* BuffitoMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00172FBE0000002056B8 /* BuffitoMood.swift */; };
 		0DAA001A2FBE0000002056B8 /* BuffitoMessageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA00192FBE0000002056B8 /* BuffitoMessageBank.swift */; };
 		0DAA001C2FBE0000002056B8 /* StreakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAA001B2FBE0000002056B8 /* StreakTracker.swift */; };
@@ -112,6 +117,8 @@
 		0DFACE312FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE322FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift */; };
 		0DFACE332FBE1000002056B8 /* BuffitoWidgetImageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE352FBE1000002056B8 /* BuffitoWidgetImageBank.swift */; };
 		0DFACE342FBE1000002056B8 /* BuffitoWidgetDailyPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE362FBE1000002056B8 /* BuffitoWidgetDailyPool.swift */; };
+		0DFACE382FBE1000002056B8 /* WidgetAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DFACE372FBE1000002056B8 /* WidgetAssets.xcassets */; };
+		0DFACE3A2FBE1000002056B8 /* BuffitoWidgetSynchronizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFACE392FBE1000002056B8 /* BuffitoWidgetSynchronizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,6 +138,11 @@
 		0DAA00112FBE0000002056B8 /* ThemeSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeSettingsView.swift; sourceTree = "<group>"; };
 		0DAA00132FBE0000002056B8 /* AnnouncementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsView.swift; sourceTree = "<group>"; };
 		0DAA00152FBE0000002056B8 /* HowToUseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToUseView.swift; sourceTree = "<group>"; };
+		0DAA00502FBE0000002056B8 /* OnboardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPage.swift; sourceTree = "<group>"; };
+		0DAA00522FBE0000002056B8 /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
+		0DAA00542FBE0000002056B8 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		0DAA00562FBE0000002056B8 /* WhatsNewSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNewSheet.swift; sourceTree = "<group>"; };
+		0DAA00582FBE0000002056B8 /* Version12UpdateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version12UpdateView.swift; sourceTree = "<group>"; };
 		0DAA00172FBE0000002056B8 /* BuffitoMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoMood.swift; sourceTree = "<group>"; };
 		0DAA00192FBE0000002056B8 /* BuffitoMessageBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoMessageBank.swift; sourceTree = "<group>"; };
 		0DAA001B2FBE0000002056B8 /* StreakTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakTracker.swift; sourceTree = "<group>"; };
@@ -218,6 +230,8 @@
 		0DFACE322FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetSpeechBank.swift; sourceTree = "<group>"; };
 		0DFACE352FBE1000002056B8 /* BuffitoWidgetImageBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetImageBank.swift; sourceTree = "<group>"; };
 		0DFACE362FBE1000002056B8 /* BuffitoWidgetDailyPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetDailyPool.swift; sourceTree = "<group>"; };
+		0DFACE372FBE1000002056B8 /* WidgetAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WidgetAssets.xcassets; sourceTree = "<group>"; };
+		0DFACE392FBE1000002056B8 /* BuffitoWidgetSynchronizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuffitoWidgetSynchronizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +310,7 @@
 				0DFACE322FBE1000002056B8 /* BuffitoWidgetSpeechBank.swift */,
 				0DFACE352FBE1000002056B8 /* BuffitoWidgetImageBank.swift */,
 				0DFACE362FBE1000002056B8 /* BuffitoWidgetDailyPool.swift */,
+				0DFACE372FBE1000002056B8 /* WidgetAssets.xcassets */,
 				0DFACE042FBE1000002056B8 /* Info.plist */,
 				0DFACE052FBE1000002056B8 /* BuffitoWidget.entitlements */,
 			);
@@ -405,6 +420,7 @@
 				0DAA00EE2FBE0000002056B8 /* BuffitoMoodMeter.swift */,
 				0DFACE082FBE1000002056B8 /* BuffitoMoodMeter+WorkoutSet.swift */,
 				0DFACE072FBE1000002056B8 /* BuffitoWidgetBridge.swift */,
+				0DFACE392FBE1000002056B8 /* BuffitoWidgetSynchronizer.swift */,
 				0DAA00F62FBE0000002056B8 /* BuffitoMoodTransition.swift */,
 				0DAA00402FBE0000002056B8 /* ModelContextSaver.swift */,
 				0DAA00A02FBE0000002056B8 /* AppLog.swift */,
@@ -460,6 +476,16 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		0DAA005A2FBE0000002056B8 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0DAA00502FBE0000002056B8 /* OnboardingPage.swift */,
+				0DAA00522FBE0000002056B8 /* OnboardingPageView.swift */,
+				0DAA00542FBE0000002056B8 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		0DBDE73C2FBD58C3002056B8 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +498,8 @@
 				0DAA000F2FBE0000002056B8 /* NotificationSettingsView.swift */,
 				0DAA00112FBE0000002056B8 /* ThemeSettingsView.swift */,
 				0DAA00132FBE0000002056B8 /* AnnouncementsView.swift */,
+				0DAA00562FBE0000002056B8 /* WhatsNewSheet.swift */,
+				0DAA00582FBE0000002056B8 /* Version12UpdateView.swift */,
 				0DAA00152FBE0000002056B8 /* HowToUseView.swift */,
 			);
 			path = Settings;
@@ -500,6 +528,7 @@
 				0DBDE7352FBD58C3002056B8 /* Calendar */,
 				0DBDE7382FBD58C3002056B8 /* Exercise */,
 				0DBDE73A2FBD58C3002056B8 /* Home */,
+				0DAA005A2FBE0000002056B8 /* Onboarding */,
 				0DBDE73C2FBD58C3002056B8 /* Settings */,
 				0DAA00F42FBE0000002056B8 /* Theme */,
 				0DBDE73E2FBD58C3002056B8 /* Timer */,
@@ -599,6 +628,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DFACE192FBE1000002056B8 /* Assets.xcassets in Resources */,
+				0DFACE382FBE1000002056B8 /* WidgetAssets.xcassets in Resources */,
 				0DFACE1A2FBE1000002056B8 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -633,6 +663,11 @@
 				0DAA00122FBE0000002056B8 /* ThemeSettingsView.swift in Sources */,
 				0DAA00142FBE0000002056B8 /* AnnouncementsView.swift in Sources */,
 				0DAA00162FBE0000002056B8 /* HowToUseView.swift in Sources */,
+				0DAA00512FBE0000002056B8 /* OnboardingPage.swift in Sources */,
+				0DAA00532FBE0000002056B8 /* OnboardingPageView.swift in Sources */,
+				0DAA00552FBE0000002056B8 /* OnboardingView.swift in Sources */,
+				0DAA00572FBE0000002056B8 /* WhatsNewSheet.swift in Sources */,
+				0DAA00592FBE0000002056B8 /* Version12UpdateView.swift in Sources */,
 				0DAA00182FBE0000002056B8 /* BuffitoMood.swift in Sources */,
 				0DAA00DF2FBE0000002056B8 /* ProFeature.swift in Sources */,
 				0DAA001A2FBE0000002056B8 /* BuffitoMessageBank.swift in Sources */,
@@ -646,6 +681,7 @@
 				0DAA00EF2FBE0000002056B8 /* BuffitoMoodMeter.swift in Sources */,
 				0DFACE122FBE1000002056B8 /* BuffitoMoodMeter+WorkoutSet.swift in Sources */,
 				0DFACE112FBE1000002056B8 /* BuffitoWidgetBridge.swift in Sources */,
+				0DFACE3A2FBE1000002056B8 /* BuffitoWidgetSynchronizer.swift in Sources */,
 				0DAA00F12FBE0000002056B8 /* AppColor.swift in Sources */,
 				0DAA00F32FBE0000002056B8 /* AppearanceMode.swift in Sources */,
 				0DAA00F52FBE0000002056B8 /* BuffitoMoodTransition.swift in Sources */,
@@ -848,7 +884,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MuscleApp/MuscleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MuscleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				ENABLE_PREVIEWS = YES;
@@ -864,7 +900,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -880,7 +916,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MuscleApp/MuscleApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"MuscleApp/Preview Content\"";
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				ENABLE_PREVIEWS = YES;
@@ -896,7 +932,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -911,7 +947,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BuffitoWidget/BuffitoWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BuffitoWidget/Info.plist;
@@ -922,7 +958,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp.BuffitoWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -938,7 +974,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = BuffitoWidget/BuffitoWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = LL98RL72H4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BuffitoWidget/Info.plist;
@@ -949,7 +985,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.n.musclapp.MuscleApp.BuffitoWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

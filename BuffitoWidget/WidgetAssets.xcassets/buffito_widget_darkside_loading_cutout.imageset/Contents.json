@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "buffito_widget_darkside_loading_cutout.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

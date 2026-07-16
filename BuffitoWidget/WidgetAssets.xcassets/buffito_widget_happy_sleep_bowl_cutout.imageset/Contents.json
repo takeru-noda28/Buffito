@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "buffito_widget_happy_sleep_bowl_cutout.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -20,7 +20,7 @@ struct MuscleAppApp: App {
     }
 
     private var appearanceMode: AppearanceMode {
-        AppearanceMode(rawValue: themeMode) ?? .system
+        AppearanceMode(rawValue: themeMode) ?? AppearanceMode.defaultValue
     }
 
     var body: some Scene {

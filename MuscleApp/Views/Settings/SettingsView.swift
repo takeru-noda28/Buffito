@@ -16,6 +16,7 @@ struct SettingsView: View {
     @State private var premiumState: Bool = PremiumManager.shared.isPremium
     @State private var showPaywall: Bool = false
     @State private var showDeleteChatConfirm: Bool = false
+    @State private var showOnboarding: Bool = false
     @AppStorage("ai_consent_given") private var aiConsentGiven: Bool = false
 
     private var appVersion: String {
@@ -62,6 +63,9 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showPaywall) {
             PaywallSheet()
+        }
+        .fullScreenCover(isPresented: $showOnboarding) {
+            OnboardingView()
         }
     }
 
@@ -188,6 +192,12 @@ struct SettingsView: View {
                     AnnouncementsView()
                 } label: {
                     settingsLinkRow(icon: "megaphone.fill", iconColor: .blue, title: "お知らせ")
+                }
+                Divider().background(Color.gray.opacity(0.2))
+                Button {
+                    showOnboarding = true
+                } label: {
+                    settingsLinkRow(icon: "rectangle.stack.fill", iconColor: .orange, title: "基本操作ガイド")
                 }
                 Divider().background(Color.gray.opacity(0.2))
                 NavigationLink {

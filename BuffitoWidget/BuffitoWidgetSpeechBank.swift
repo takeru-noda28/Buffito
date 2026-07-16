@@ -10,8 +10,33 @@
 import Foundation
 
 enum BuffitoWidgetSpeechBank {
-    static func dailyLine(for mood: BuffitoMood, on date: Date) -> String {
-        BuffitoWidgetDailyPool.pick(from: lines(for: mood), on: date) ?? mood.statusText
+    private static let recentWorkoutLines = [
+        "トレーニングおつかれ！",
+        "次は何トレする？",
+        "ナイストレーニング！",
+        "今日もよく頑張った！"
+    ]
+
+    static func dailyLine(
+        for group: BuffitoWidgetImageGroup,
+        mood: BuffitoMood,
+        on date: Date
+    ) -> String {
+        let candidates: [String]
+        let salt: Int
+        switch group {
+        case .recentWorkout:
+            candidates = recentWorkoutLines
+            salt = 7
+        case .workoutOverdue:
+            candidates = lines(for: mood)
+            salt = 0
+        }
+        return BuffitoWidgetDailyPool.pick(
+            from: candidates,
+            on: date,
+            salt: salt
+        ) ?? mood.statusText
     }
 
     private static func lines(for mood: BuffitoMood) -> [String] {

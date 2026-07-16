@@ -23,6 +23,10 @@ struct ExerciseDetailView: View {
     @State private var weightInput: Double = 0.0
     @State private var repsInput: Int = 0
 
+    // 種目ごとのフォームや回数のコツを残すメモ
+    @State private var memoInput: String
+    @State private var showMemoSaveError: Bool = false
+
     // PR達成時のポップアップ表示（B-3：通知の代わりにアプリ内アニメーション）
     @State private var prBanner: PRBannerData? = nil
 
@@ -61,6 +65,7 @@ struct ExerciseDetailView: View {
         self.exercise = exercise
         self.backLabel = backLabel
         self.targetDate = targetDate
+        _memoInput = State(initialValue: exercise.memo)
         let exerciseId = exercise.persistentModelID
         _allSets = Query(
             filter: #Predicate<WorkoutSet> { $0.exercise?.persistentModelID == exerciseId },
@@ -129,6 +134,8 @@ struct ExerciseDetailView: View {
                 VStack(spacing: 24) {
                     GrowthSummaryCard(exercise: exercise)
 
+                    memoSection
+
                     NavigationLink {
                         ExerciseHistoryView(exercise: exercise)
                     } label: {
@@ -165,6 +172,11 @@ struct ExerciseDetailView: View {
         .sheet(isPresented: $showRestEditSheet) {
             RestEditSheet(exercise: exercise, sets: todaySets)
         }
+        .alert("メモを保存できませんでした", isPresented: $showMemoSaveError) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("時間をおいて、もう一度保存してください。")
+        }
         .navigationTitle(exercise.name)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
@@ -181,14 +193,64 @@ struct ExerciseDetailView: View {
         .toolbarBackground(Color.appBackground, for: .navigationBar)
         .toolbarBackground(.visible, for: .navigationBar)
         .onAppear {
+            memoInput = exercise.memo
             loadInputValues()
             registerWorkoutContextIfPossible()
+        }
+        .onDisappear {
+            saveMemoIfNeeded()
         }
         .onChange(of: weightInput) { _, newValue in
             UserDefaults.standard.set(newValue, forKey: weightStorageKey)
         }
         .onChange(of: repsInput) { _, newValue in
             UserDefaults.standard.set(newValue, forKey: repsStorageKey)
+        }
+        .onChange(of: memoInput) {
+            saveMemoIfNeeded()
+        }
+    }
+
+    private var memoSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Label("種目メモ", systemImage: "note.text")
+                .font(.headline)
+                .foregroundColor(.appTextPrimary)
+
+            ZStack(alignment: .topLeading) {
+                if memoInput.isEmpty {
+                    Text("例：肩甲骨を寄せる、8回を目安にする")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 16)
+                        .allowsHitTesting(false)
+                }
+
+                TextEditor(text: $memoInput)
+                    .foregroundColor(.appTextPrimary)
+                    .scrollContentBackground(.hidden)
+                    .padding(8)
+                    .frame(minHeight: 110)
+            }
+            .background(Color.appField)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.appCard)
+        }
+    }
+
+    private func saveMemoIfNeeded() {
+        guard memoInput != exercise.memo else { return }
+        let previousMemo = exercise.memo
+        exercise.memo = memoInput
+        guard modelContext.saveOrLog("種目メモ保存") else {
+            exercise.memo = previousMemo
+            showMemoSaveError = true
+            return
         }
     }
 
@@ -229,7 +291,11 @@ struct ExerciseDetailView: View {
         let newSet = WorkoutSet(weight: weightInput, reps: repsInput, date: newRecordDate)
         newSet.exercise = exercise
         modelContext.insert(newSet)
-        modelContext.saveOrLog("セット追加")  // persistentModelIDを確定させる
+        // 保存に失敗した未永続セットでウィジェットを更新しない
+        guard modelContext.saveOrLog("セット追加") else {
+            modelContext.delete(newSet)
+            return
+        }
 
         WorkoutContext.shared.updateAfterAddingSet(
             exercise: exercise,
@@ -263,8 +329,8 @@ struct ExerciseDetailView: View {
             scheduleMotivationNotification(lastWorkoutDate: latestWorkoutDate)
             BuffitoNotifier.shared.rescheduleAfterWorkout(lastWorkoutDate: latestWorkoutDate, allSets: everySet)
             // ホーム画面ウィジェットを最新のムード・ストリークに更新
-            BuffitoWidgetBridge.update(
-                trainingDays: BuffitoMoodMeter.trainingDays(from: everySet),
+            BuffitoWidgetSynchronizer.synchronize(
+                allSets: everySet,
                 currentStreak: streak.current
             )
         } else {
@@ -374,6 +440,7 @@ struct ExerciseDetailView: View {
         withAnimation(.easeInOut(duration: 0.25)) {
             modelContext.delete(set)
         }
-        modelContext.saveOrLog("セット削除")
+        guard modelContext.saveOrLog("セット削除") else { return }
+        BuffitoWidgetSynchronizer.synchronize(using: modelContext, operation: "セット削除後")
     }
 }

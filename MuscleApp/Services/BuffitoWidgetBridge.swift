@@ -3,8 +3,8 @@
 //  MuscleApp
 //
 //  アプリ→ウィジェットのデータ受け渡し。
-//  SwiftDataストア本体は共有せず、ムード計算に必要な最小情報（直近のトレ日と
-//  ストリーク）だけをApp Group共有UserDefaultsにスナップショットとして書く。
+//  SwiftDataストア本体は共有せず、ムード計算と画像切替に必要な最小情報（直近の
+//  トレ日・最終記録日時・ストリーク）だけをApp Group共有UserDefaultsに書く。
 //  ムードは決定的に再計算できるため、ウィジェット側で未来日の予測もできる。
 //  このファイルはアプリ・ウィジェット両ターゲットに含める。
 //
@@ -13,20 +13,27 @@ import Foundation
 import WidgetKit
 
 struct BuffitoWidgetSnapshot: Codable {
-    // startOfDay正規化済みのトレ日（直近のムード計算窓+余裕分）
+    // startOfDay正規化済みのトレ日（直近の計算窓+余裕分、長期不在時は最終日1件）
     let trainingDays: [Date]
+    // 旧スナップショットを読み込めるよう任意項目にする
+    let lastWorkoutDate: Date?
     let currentStreak: Int
     let updatedAt: Date
 }
 
 enum BuffitoWidgetBridge {
     static let appGroupID = "group.com.n.musclapp.MuscleApp"
+    static let widgetKind = "BuffitoStatusWidget"
     private static let snapshotKey = "buffito_widget_snapshot"
     // ムード計算窓30日+タイムライン先読み分をカバーする保存範囲
     private static let keepDays = 45
 
     // アプリ側から呼ぶ：スナップショット保存 + ウィジェット再描画依頼
-    static func update(trainingDays: Set<Date>, currentStreak: Int) {
+    static func update(
+        trainingDays: Set<Date>,
+        lastWorkoutDate: Date?,
+        currentStreak: Int
+    ) {
         guard let defaults = UserDefaults(suiteName: appGroupID) else {
             AppLog.widget.error("App Group UserDefaultsを開けませんでした: \(appGroupID, privacy: .public)")
             return
@@ -35,18 +42,35 @@ enum BuffitoWidgetBridge {
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let cutoff = calendar.date(byAdding: .day, value: -keepDays, to: today) ?? today
-        let recentDays = trainingDays.filter { $0 >= cutoff }.sorted()
+        let normalizedTrainingDays = Set(trainingDays.map { calendar.startOfDay(for: $0) })
+        let recentDays = normalizedTrainingDays.filter { $0 >= cutoff }.sorted()
+
+        // 全履歴が保存範囲より古くても「記録なし」と誤認しないよう、最終日を残す
+        let daysToStore: [Date]
+        if recentDays.isEmpty, let latestDay = normalizedTrainingDays.max() {
+            daysToStore = [latestDay]
+        } else {
+            daysToStore = recentDays
+        }
 
         let snapshot = BuffitoWidgetSnapshot(
-            trainingDays: recentDays,
+            trainingDays: daysToStore,
+            lastWorkoutDate: lastWorkoutDate,
             currentStreak: currentStreak,
             updatedAt: Date()
         )
 
+        if let currentSnapshot = load(),
+           currentSnapshot.trainingDays == snapshot.trainingDays,
+           currentSnapshot.lastWorkoutDate == snapshot.lastWorkoutDate,
+           currentSnapshot.currentStreak == snapshot.currentStreak {
+            return
+        }
+
         do {
             let data = try JSONEncoder().encode(snapshot)
             defaults.set(data, forKey: snapshotKey)
-            WidgetCenter.shared.reloadAllTimelines()
+            WidgetCenter.shared.reloadTimelines(ofKind: widgetKind)
         } catch {
             AppLog.widget.error("ウィジェットスナップショットの保存失敗: \(error.localizedDescription, privacy: .public)")
         }
@@ -65,4 +89,5 @@ enum BuffitoWidgetBridge {
             return nil
         }
     }
+
 }

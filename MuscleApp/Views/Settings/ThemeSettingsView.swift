@@ -150,6 +150,6 @@ struct ThemeSettingsView: View {
     }
 
     private var selectedAppearanceMode: AppearanceMode {
-        AppearanceMode(rawValue: themeMode) ?? .system
+        AppearanceMode(rawValue: themeMode) ?? AppearanceMode.defaultValue
     }
 }

@@ -256,6 +256,20 @@ struct ExerciseSessionCard: View {
                         RestIndicator(seconds: rest)
                     }
                 }
+
+                // 種目メモ（2行まで。全文はカードタップ→種目詳細で読む）
+                if let memo = trimmedMemo {
+                    HStack(alignment: .top, spacing: 4) {
+                        Image(systemName: "note.text")
+                        Text(memo)
+                            .lineLimit(2)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.top, 2)
+                }
             }
             .padding()
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -283,6 +297,12 @@ struct ExerciseSessionCard: View {
             swapFirstSetDate(draggedFirstSetTime: draggedFirstSetTime)
             return true
         }
+    }
+
+    // 空白・改行だけのメモは「なし」扱いにする
+    private var trimmedMemo: String? {
+        let memo = exercise.memo.trimmingCharacters(in: .whitespacesAndNewlines)
+        return memo.isEmpty ? nil : memo
     }
 
     private var firstSetTime: Double {

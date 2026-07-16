@@ -14,6 +14,7 @@ final class Exercise {
     var isDefault: Bool = false
     var sortOrder: Int = 0
     var createdAt: Date = Date()
+    var memo: String = ""
 
     @Relationship(deleteRule: .cascade, inverse: \WorkoutSet.exercise)
     var sets: [WorkoutSet] = []

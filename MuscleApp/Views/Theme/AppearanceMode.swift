@@ -14,7 +14,7 @@ enum AppearanceMode: String, CaseIterable, Identifiable {
     case light
 
     static let storageKey = "theme_mode"
-    static let defaultValue = AppearanceMode.system
+    static let defaultValue = AppearanceMode.dark
 
     var id: String { rawValue }
 

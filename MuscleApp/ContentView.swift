@@ -8,8 +8,16 @@
 import SwiftUI
 import SwiftData
 
+private enum LaunchExperienceStorage {
+    static let onboardingCompletedKey = "has_completed_onboarding"
+    static let lastSeenUpdateVersionKey = "last_seen_whats_new_version"
+    static let currentUpdateVersion = "1.2"
+}
+
 // アプリのルートView。タブバーを管理する
 struct ContentView: View {
+    let presentsLaunchExperience: Bool
+
     // タブの並び順（Buffito＝AIチャットを中央に配置）
     private enum Tab {
         case home, analytics, buffito, timer, calendar
@@ -20,9 +28,21 @@ struct ContentView: View {
     @State private var analyticsId = UUID()
     @State private var buffitoId = UUID()
     @State private var calendarId = UUID()
+    @State private var showOnboarding: Bool = false
+    @State private var showWhatsNew: Bool = false
+    @State private var hasEvaluatedLaunchExperience: Bool = false
+
+    @AppStorage(LaunchExperienceStorage.onboardingCompletedKey)
+    private var hasCompletedOnboarding: Bool = false
+    @AppStorage(LaunchExperienceStorage.lastSeenUpdateVersionKey)
+    private var lastSeenUpdateVersion: String = ""
 
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.modelContext) private var modelContext
+
+    init(presentsLaunchExperience: Bool = true) {
+        self.presentsLaunchExperience = presentsLaunchExperience
+    }
 
     // 同じタブを再タップしたら .id を変えてルートに戻す
     private var tabBinding: Binding<Tab> {
@@ -82,25 +102,80 @@ struct ContentView: View {
         .tint(selectedTabColor)
         .onAppear {
             refreshOnForeground()
+            presentOnboardingIfNeeded()
         }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active {
                 refreshOnForeground()
             }
         }
+        .fullScreenCover(isPresented: $showOnboarding, onDismiss: {
+            presentWhatsNewIfNeeded()
+        }) {
+            OnboardingView {
+                completeOnboarding()
+            }
+        }
+        .sheet(isPresented: $showWhatsNew) {
+            WhatsNewSheet()
+        }
+    }
+
+    private func presentOnboardingIfNeeded() {
+        guard presentsLaunchExperience,
+              !hasEvaluatedLaunchExperience else { return }
+
+        if hasCompletedOnboarding {
+            hasEvaluatedLaunchExperience = true
+            presentWhatsNewIfNeeded()
+            return
+        }
+
+        guard let hasExistingRecord = hasExistingWorkoutRecord() else { return }
+        hasEvaluatedLaunchExperience = true
+
+        if hasExistingRecord {
+            hasCompletedOnboarding = true
+            presentWhatsNewIfNeeded()
+        } else {
+            showOnboarding = true
+        }
+    }
+
+    private func presentWhatsNewIfNeeded() {
+        guard presentsLaunchExperience,
+              lastSeenUpdateVersion != LaunchExperienceStorage.currentUpdateVersion else { return }
+        // 表示中にアプリを終了しても次回起動で重複表示しないよう、表示開始時に既読化する
+        lastSeenUpdateVersion = LaunchExperienceStorage.currentUpdateVersion
+        showWhatsNew = true
+    }
+
+    // 新規ユーザーはオンボーディング完了時点で同バージョンの更新案内も既読にする
+    private func completeOnboarding() {
+        hasCompletedOnboarding = true
+        lastSeenUpdateVersion = LaunchExperienceStorage.currentUpdateVersion
+    }
+
+    // 新設したオンボーディングキーを持たなくても、記録があれば既存ユーザーと判定する
+    private func hasExistingWorkoutRecord() -> Bool? {
+        var descriptor = FetchDescriptor<WorkoutSet>()
+        descriptor.fetchLimit = 1
+        guard let existingSets = modelContext.fetchOrLog(
+            descriptor,
+            operation: "起動体験の既存記録確認"
+        ) else {
+            return nil
+        }
+        return !existingSets.isEmpty
     }
 
     // アプリ起動/前面復帰時の同期処理。
     // リマインダー文面とホーム画面ウィジェットが古いストリーク/ムードのままにならないようにする
     private func refreshOnForeground() {
-        let descriptor = FetchDescriptor<WorkoutSet>()
-        guard let allSets = modelContext.fetchOrLog(descriptor, operation: "前面復帰時の全セット取得") else { return }
-        let currentStreak = StreakTracker.calculate(sets: allSets).current
-
-        BuffitoWidgetBridge.update(
-            trainingDays: BuffitoMoodMeter.trainingDays(from: allSets),
-            currentStreak: currentStreak
-        )
+        guard let currentStreak = BuffitoWidgetSynchronizer.synchronize(
+            using: modelContext,
+            operation: "前面復帰時"
+        ) else { return }
         rescheduleDailyReminderIfEnabled(currentStreak: currentStreak)
     }
 
@@ -126,6 +201,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ContentView(presentsLaunchExperience: false)
         .modelContainer(for: [Exercise.self, WorkoutSet.self, AIMessage.self], inMemory: true)
 }

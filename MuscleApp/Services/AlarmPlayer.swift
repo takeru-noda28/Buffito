@@ -25,8 +25,18 @@ final class AlarmPlayer {
                 if Task.isCancelled { return }
                 self?.playBeep()
                 self?.vibrate()
-                // sleepの失敗はキャンセル時のみ。次のループ先頭で抜けるので握りつぶしてよい
-                try? await Task.sleep(nanoseconds: UInt64(alarmIntervalSeconds * 1_000_000_000))
+                do {
+                    try await Task.sleep(
+                        nanoseconds: UInt64(alarmIntervalSeconds * 1_000_000_000)
+                    )
+                } catch {
+                    if !Task.isCancelled {
+                        AppLog.audio.error(
+                            "アラーム待機失敗: \(error.localizedDescription, privacy: .public)"
+                        )
+                    }
+                    return
+                }
             }
         }
     }

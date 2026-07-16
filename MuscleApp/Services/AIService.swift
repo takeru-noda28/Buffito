@@ -93,14 +93,22 @@ final class AIService {
 
         if httpResponse.statusCode == 429 {
             // エラーボディの解析は精一杯の努力でよい（失敗してもフォールバック値で通知できる）
-            let errorBody = try? decoder.decode(RateLimitErrorBody.self, from: data)
+            let errorBody = decodeErrorBody(
+                RateLimitErrorBody.self,
+                from: data,
+                operation: "利用上限エラー応答の解析"
+            )
             let resetAt = errorBody?.resetAt.flatMap { ISO8601DateFormatter().date(from: $0) } ?? Date()
             throw AIServiceError.rateLimitExceeded(limit: errorBody?.limit ?? 0, resetAt: resetAt)
         }
 
         guard httpResponse.statusCode == 200 else {
             // エラーボディの解析は精一杯の努力でよい（失敗時は汎用メッセージを使う）
-            let errorBody = try? decoder.decode(ErrorBody.self, from: data)
+            let errorBody = decodeErrorBody(
+                ErrorBody.self,
+                from: data,
+                operation: "サーバーエラー応答の解析"
+            )
             throw AIServiceError.serverError(errorBody?.message ?? "エラーが発生しました")
         }
 
@@ -113,6 +121,21 @@ final class AIService {
         }
 
         return AIResponse(reply: decoded.reply, remaining: decoded.remaining, limit: decoded.limit)
+    }
+
+    private func decodeErrorBody<Body: Decodable>(
+        _ type: Body.Type,
+        from data: Data,
+        operation: String
+    ) -> Body? {
+        do {
+            return try decoder.decode(type, from: data)
+        } catch {
+            AppLog.network.error(
+                "\(operation, privacy: .public)失敗: \(error.localizedDescription, privacy: .public)"
+            )
+            return nil
+        }
     }
 }
 

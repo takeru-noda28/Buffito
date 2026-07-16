@@ -165,10 +165,7 @@ struct ExerciseListView: View {
                 }
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                     Button {
-                        withAnimation(.easeInOut(duration: 0.25)) {
-                            modelContext.delete(exercise)
-                        }
-                        modelContext.saveOrLog("種目削除")
+                        deleteExercise(exercise)
                     } label: {
                         Label("削除", systemImage: "trash")
                             .labelStyle(.iconOnly)
@@ -178,12 +175,25 @@ struct ExerciseListView: View {
         }
     }
 
+    // 種目と配下セットを削除し、ウィジェットも最新状態へ同期する
+    private func deleteExercise(_ exercise: Exercise) {
+        withAnimation(.easeInOut(duration: 0.25)) {
+            modelContext.delete(exercise)
+        }
+        saveDeletionAndSynchronize(operation: "種目削除")
+    }
+
     // 編集モードの一括削除（赤い「－」ボタン経由）
     private func deleteExercises(at offsets: IndexSet) {
         for index in offsets {
             modelContext.delete(exercises[index])
         }
-        modelContext.saveOrLog("種目一括削除")
+        saveDeletionAndSynchronize(operation: "種目一括削除")
+    }
+
+    private func saveDeletionAndSynchronize(operation: String) {
+        guard modelContext.saveOrLog(operation) else { return }
+        BuffitoWidgetSynchronizer.synchronize(using: modelContext, operation: "\(operation)後")
     }
 
     // ドラッグで並び替えたとき

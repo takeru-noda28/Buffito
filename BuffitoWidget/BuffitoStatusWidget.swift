@@ -2,7 +2,7 @@
 //  BuffitoStatusWidget.swift
 //  BuffitoWidgetExtension
 //
-//  ホーム画面ウィジェット（Apple Fitness風）。
+//  Buffitoの状態を表示するホーム画面ウィジェット。
 //  アプリが書いたスナップショット（トレ日・ストリーク）からムードを再計算する。
 //  ムードは決定的なので、未来7日分のタイムラインを事前生成しておけば
 //  アプリを開かなくても「サボるとBuffitoが寂しくなっていく」が再現できる。
@@ -11,15 +11,107 @@
 import SwiftUI
 import WidgetKit
 
+private struct SmallWidgetImageMetrics {
+    let size: CGFloat
+    let bottomOffset: CGFloat
+}
+
+private struct SmallWidgetPalette {
+    let backgroundStart: Color
+    let backgroundEnd: Color
+    let scoreText: Color
+    let speechText: Color
+}
+
+// Aは明るく、Bは従来の紫を維持する
+private enum SmallWidgetTheme {
+    private static let yellowPalette = SmallWidgetPalette(
+        backgroundStart: Color(red: 1.00, green: 0.87, blue: 0.29),
+        backgroundEnd: Color(red: 0.98, green: 0.55, blue: 0.13),
+        scoreText: Color(red: 0.25, green: 0.16, blue: 0.03),
+        speechText: Color(red: 0.32, green: 0.20, blue: 0.04)
+    )
+    private static let greenPalette = SmallWidgetPalette(
+        backgroundStart: Color(red: 0.68, green: 0.93, blue: 0.35),
+        backgroundEnd: Color(red: 0.14, green: 0.68, blue: 0.38),
+        scoreText: Color(red: 0.04, green: 0.20, blue: 0.10),
+        speechText: Color(red: 0.05, green: 0.25, blue: 0.13)
+    )
+    private static let orangePalette = SmallWidgetPalette(
+        backgroundStart: Color(red: 1.00, green: 0.69, blue: 0.27),
+        backgroundEnd: Color(red: 0.95, green: 0.35, blue: 0.18),
+        scoreText: Color(red: 0.27, green: 0.11, blue: 0.03),
+        speechText: Color(red: 0.34, green: 0.14, blue: 0.04)
+    )
+    private static let recentWorkoutPalettes = [
+        yellowPalette,
+        greenPalette,
+        orangePalette
+    ]
+    private static let workoutOverduePalette = SmallWidgetPalette(
+        backgroundStart: Color(red: 0.40, green: 0.29, blue: 0.75),
+        backgroundEnd: Color(red: 0.15, green: 0.11, blue: 0.34),
+        scoreText: Color(red: 0.79, green: 0.73, blue: 0.95),
+        speechText: Color(red: 0.82, green: 0.78, blue: 0.93)
+    )
+
+    static func palette(
+        for group: BuffitoWidgetImageGroup,
+        on date: Date
+    ) -> SmallWidgetPalette {
+        switch group {
+        case .recentWorkout:
+            return BuffitoWidgetDailyPool.pick(
+                from: recentWorkoutPalettes,
+                on: date,
+                salt: 43
+            ) ?? yellowPalette
+        case .workoutOverdue:
+            return workoutOverduePalette
+        }
+    }
+}
+
+// smallウィジェットのレイアウト値。モックアップの上下構成を保つため一元管理する
+private enum SmallWidgetLayout {
+    static let horizontalPadding: CGFloat = 10
+    static let topPadding: CGFloat = 16
+    static let textSpacing: CGFloat = 3
+    private static let defaultImageMetrics = SmallWidgetImageMetrics(
+        size: 132,
+        bottomOffset: 28
+    )
+    static let emojiBottomOffset = defaultImageMetrics.bottomOffset
+
+    // 追加2枚は透明な上余白が大きいため、個別に表示領域を補正する
+    static func imageMetrics(for assetName: String) -> SmallWidgetImageMetrics {
+        switch assetName {
+        case "buffito_widget_happy_sleep_bowl_cutout":
+            return SmallWidgetImageMetrics(size: 140, bottomOffset: 10)
+        case "buffito_widget_darkside_loading_cutout":
+            return SmallWidgetImageMetrics(size: 156, bottomOffset: 0)
+        default:
+            return defaultImageMetrics
+        }
+    }
+}
+
+private enum WidgetTimelineConstants {
+    static let recentWorkoutDuration: TimeInterval = 14 * 60 * 60
+    static let futureDayCount = 7
+}
+
 // MARK: - タイムライン
 
 struct BuffitoStatusEntry: TimelineEntry {
     let date: Date
     let score: Int
     let streak: Int
-    // 日替わりの一言と画像（タイムライン生成時に日付から決定的に選ぶ）
+    // 一言と画像はタイムライン生成時に選び、表示中に変化しないよう保持する
     let speech: String
-    let assetName: String?
+    let smallImageGroup: BuffitoWidgetImageGroup
+    let smallAssetName: String?
+    let compactAssetName: String?
 
     var mood: BuffitoMood { BuffitoMoodMeter.mood(for: score) }
 }
@@ -27,12 +119,11 @@ struct BuffitoStatusEntry: TimelineEntry {
 struct BuffitoStatusProvider: TimelineProvider {
     // ウィジェットギャラリーのプレビュー用
     func placeholder(in context: Context) -> BuffitoStatusEntry {
-        BuffitoStatusEntry(
+        makeEntry(
             date: Date(),
             score: 100,
             streak: 7,
-            speech: "今日も無敵だよ🔥",
-            assetName: BuffitoWidgetImageBank.dailyAssetName(for: .fired, on: Date())
+            imageGroup: .recentWorkout
         )
     }
 
@@ -42,22 +133,49 @@ struct BuffitoStatusProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<BuffitoStatusEntry>) -> Void) {
         // 今日+未来7日分（毎日0時切替）。トレーニングが記録されたら
-        // アプリ側がreloadAllTimelines()を呼ぶので、未来分は「サボり続けた場合」の予測でよい
+        // アプリ側がタイムラインを再読み込みするので、未来分は「サボり続けた場合」の予測でよい
         let calendar = Calendar.current
         let now = Date()
-        var entries = [currentEntry(referenceDate: now)]
+        let snapshot = BuffitoWidgetBridge.load()
+        var entryDates: Set<Date> = [now]
 
-        for offset in 1...7 {
+        // 14時間の境界をEntryとして追加し、次の0時を待たずB群へ切り替える
+        if let lastWorkoutDate = snapshot?.lastWorkoutDate {
+            let transitionDate = lastWorkoutDate.addingTimeInterval(
+                WidgetTimelineConstants.recentWorkoutDuration
+            )
+            if transitionDate > now {
+                entryDates.insert(transitionDate)
+            }
+        }
+
+        for offset in 1...WidgetTimelineConstants.futureDayCount {
             guard let day = calendar.date(byAdding: .day, value: offset, to: calendar.startOfDay(for: now)) else { continue }
-            entries.append(currentEntry(referenceDate: day))
+            entryDates.insert(day)
+        }
+
+        let entries = entryDates.sorted().map {
+            currentEntry(referenceDate: $0, snapshot: snapshot)
         }
         completion(Timeline(entries: entries, policy: .atEnd))
     }
 
     private func currentEntry(referenceDate: Date = Date()) -> BuffitoStatusEntry {
-        guard let snapshot = BuffitoWidgetBridge.load() else {
+        currentEntry(referenceDate: referenceDate, snapshot: BuffitoWidgetBridge.load())
+    }
+
+    private func currentEntry(
+        referenceDate: Date,
+        snapshot: BuffitoWidgetSnapshot?
+    ) -> BuffitoStatusEntry {
+        guard let snapshot else {
             // アプリ未起動（スナップショット無し）は初期状態の「普通」を見せる
-            return makeEntry(date: referenceDate, score: 50, streak: 0)
+            return makeEntry(
+                date: referenceDate,
+                score: 50,
+                streak: 0,
+                imageGroup: .workoutOverdue
+            )
         }
 
         let calendar = Calendar.current
@@ -71,17 +189,53 @@ struct BuffitoStatusProvider: TimelineProvider {
         }
         let streak = (gapDays ?? Int.max) <= 1 ? snapshot.currentStreak : 0
 
-        return makeEntry(date: referenceDate, score: score, streak: streak)
+        return makeEntry(
+            date: referenceDate,
+            score: score,
+            streak: streak,
+            imageGroup: imageGroup(
+                lastWorkoutDate: snapshot.lastWorkoutDate,
+                referenceDate: referenceDate
+            )
+        )
     }
 
-    private func makeEntry(date: Date, score: Int, streak: Int) -> BuffitoStatusEntry {
+    private func imageGroup(
+        lastWorkoutDate: Date?,
+        referenceDate: Date
+    ) -> BuffitoWidgetImageGroup {
+        guard let lastWorkoutDate else { return .workoutOverdue }
+        let elapsed = referenceDate.timeIntervalSince(lastWorkoutDate)
+        guard elapsed >= 0,
+              elapsed < WidgetTimelineConstants.recentWorkoutDuration else {
+            return .workoutOverdue
+        }
+        return .recentWorkout
+    }
+
+    private func makeEntry(
+        date: Date,
+        score: Int,
+        streak: Int,
+        imageGroup: BuffitoWidgetImageGroup
+    ) -> BuffitoStatusEntry {
         let mood = BuffitoMoodMeter.mood(for: score)
+        let smallAssetName = BuffitoWidgetImageBank.dailySmallAssetName(
+            for: imageGroup,
+            on: date
+        )
         return BuffitoStatusEntry(
             date: date,
             score: score,
             streak: streak,
-            speech: BuffitoWidgetSpeechBank.dailyLine(for: mood, on: date),
-            assetName: BuffitoWidgetImageBank.dailyAssetName(for: mood, on: date)
+            speech: BuffitoWidgetSpeechBank.dailyLine(
+                for: imageGroup,
+                mood: mood,
+                on: date
+            ),
+            smallImageGroup: imageGroup,
+            smallAssetName: smallAssetName,
+            compactAssetName: BuffitoWidgetImageBank.compactAssetName(for: mood)
         )
     }
 }
@@ -90,7 +244,7 @@ struct BuffitoStatusProvider: TimelineProvider {
 
 struct BuffitoStatusWidget: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: "BuffitoStatusWidget", provider: BuffitoStatusProvider()) { entry in
+        StaticConfiguration(kind: BuffitoWidgetBridge.widgetKind, provider: BuffitoStatusProvider()) { entry in
             BuffitoStatusWidgetView(entry: entry)
                 .containerBackground(for: .widget) {
                     LinearGradient(
@@ -103,7 +257,7 @@ struct BuffitoStatusWidget: Widget {
         .configurationDisplayName("Buffitoの状態")
         .description("記録に応じて変わるBuffitoの気分とストリークを表示します。")
         .supportedFamilies([.systemSmall, .systemMedium])
-        // smallはキャラを枠いっぱいに見せるため標準の余白を無効化する（A案）
+        // smallの全面背景と下端のBuffitoを枠いっぱいに表示するため標準余白を無効化する
         .contentMarginsDisabled()
     }
 }
@@ -121,28 +275,77 @@ struct BuffitoStatusWidgetView: View {
         }
     }
 
-    // small（A案+一言）：キャラ全画面 + 上部中央にやる気% + 下部に日替わりの一言
+    // small：上部にやる気%、中央に一言、下部にBuffitoを置くシンプル構成
     private var smallLayout: some View {
-        ZStack {
-            fullBleedBuffito
-            VStack {
-                scorePill
+        ZStack(alignment: .bottom) {
+            smallBackground
+            smallBuffitoImage
+
+            VStack(spacing: SmallWidgetLayout.textSpacing) {
+                smallScoreText
+                smallSpeechText
                 Spacer()
-                speechText
             }
-            .padding(.vertical, 9)
-            .padding(.horizontal, 6)
+            .padding(.top, SmallWidgetLayout.topPadding)
+            .padding(.horizontal, SmallWidgetLayout.horizontalPadding)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .clipped()
     }
 
-    // 日替わりの一言（帯なし・影でどのムード色でも読めるようにする）
-    private var speechText: some View {
-        Text(entry.speech)
-            .font(.caption.bold())
-            .foregroundColor(.white)
+    private var smallPalette: SmallWidgetPalette {
+        SmallWidgetTheme.palette(
+            for: entry.smallImageGroup,
+            on: entry.date
+        )
+    }
+
+    private var smallBackground: some View {
+        LinearGradient(
+            colors: [
+                smallPalette.backgroundStart,
+                smallPalette.backgroundEnd
+            ],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+
+    private var smallScoreText: some View {
+        Text("やる気 \(entry.score)%")
+            .font(.system(size: 23, weight: .bold, design: .rounded))
+            .foregroundColor(smallPalette.scoreText)
             .lineLimit(1)
-            .minimumScaleFactor(0.7)
-            .shadow(color: .black.opacity(0.85), radius: 3, x: 0, y: 1)
+            .minimumScaleFactor(0.75)
+    }
+
+    // 日付とムードに応じた一言を中央に表示する
+    private var smallSpeechText: some View {
+        Text(entry.speech)
+            .font(.system(size: 13, weight: .medium, design: .rounded))
+            .foregroundColor(smallPalette.speechText)
+            .lineLimit(1)
+            .minimumScaleFactor(0.75)
+    }
+
+    // 背景のないムード画像を下端から覗かせる。画像ごとの透明余白も同じ枠内で吸収する
+    @ViewBuilder
+    private var smallBuffitoImage: some View {
+        if let assetName = entry.smallAssetName {
+            let metrics = SmallWidgetLayout.imageMetrics(for: assetName)
+            Image(assetName)
+                .resizable()
+                .scaledToFit()
+                .frame(
+                    width: metrics.size,
+                    height: metrics.size
+                )
+                .offset(y: metrics.bottomOffset)
+        } else {
+            Text(entry.mood.emoji)
+                .font(.system(size: 80))
+                .offset(y: SmallWidgetLayout.emojiBottomOffset)
+        }
     }
 
     // medium：キャラ + ステータス文 + やる気ゲージ + ストリーク
@@ -170,33 +373,6 @@ struct BuffitoStatusWidgetView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    // キャラの全画面表示。透過PNG前提でムード色の背景に重ねる
-    // 画像はタイムライン生成時にBuffitoWidgetImageBankから日替わりで選択済み
-    @ViewBuilder
-    private var fullBleedBuffito: some View {
-        if let assetName = entry.assetName {
-            Image(assetName)
-                .resizable()
-                .scaledToFill()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .clipped()
-        } else {
-            Text(entry.mood.emoji)
-                .font(.system(size: 80))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-    }
-
-    // やる気%のピル（黒半透明は視認性確保のための固定色）
-    private var scorePill: some View {
-        Text("\(entry.score)%")
-            .font(.subheadline.bold())
-            .foregroundColor(.white)
-            .padding(.horizontal, 11)
-            .padding(.vertical, 3)
-            .background(Capsule().fill(Color.black.opacity(0.45)))
-    }
-
     private var streakLabel: some View {
         Text(entry.streak >= 1 ? "🔥 \(entry.streak)日連続中" : "今日から再スタート！")
             .font(.caption2)
@@ -216,10 +392,10 @@ struct BuffitoStatusWidgetView: View {
         .frame(height: 8)
     }
 
-    // Buffito画像（medium用）。日替わり選択済みのアセットがあれば本画像、なければ絵文字
+    // Buffito画像（medium用）。透過アセットがあれば本画像、なければ絵文字
     @ViewBuilder
     private func buffitoImage(size: CGFloat) -> some View {
-        if let assetName = entry.assetName {
+        if let assetName = entry.compactAssetName {
             Image(assetName)
                 .resizable()
                 .scaledToFit()
